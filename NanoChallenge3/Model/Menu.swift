@@ -15,6 +15,7 @@ class Menu: Identifiable{
     var portion: Int
     var portionUnit: String
     let ingredients = Ingredient(ingredientName: "ingredient", ingredientQuantity: 1, ingredientUnit: "kg")
+    var menuPrice: Int
     
     init(menuName: String, portion: Int, portionUnit: String, ingredients: Ingredient) {
         id = UUID().uuidString
