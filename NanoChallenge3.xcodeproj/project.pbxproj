@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4383148E2C4356F900E84B26 /* ScanInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383148D2C4356F900E84B26 /* ScanInstructions.swift */; };
+		438314922C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */; };
 		43D44CE62C4177220070EBA3 /* recipeCardEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */; };
 		43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D44CE72C4177990070EBA3 /* recipeCardFilled.swift */; };
 		5B15B2042C3EFBD8009A0D83 /* NanoChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B2032C3EFBD8009A0D83 /* NanoChallenge3App.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		4383148D2C4356F900E84B26 /* ScanInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanInstructions.swift; sourceTree = "<group>"; };
+		438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortionResultViewDecimalPadModifier.swift; sourceTree = "<group>"; };
 		43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCardEmpty.swift; sourceTree = "<group>"; };
 		43D44CE72C4177990070EBA3 /* recipeCardFilled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCardFilled.swift; sourceTree = "<group>"; };
 		5B15B2002C3EFBD8009A0D83 /* NanoChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 				5B15B2242C3FC667009A0D83 /* InputIngredientView.swift */,
 				5B15B2262C3FC684009A0D83 /* InputCustomPortionView.swift */,
 				5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */,
+				438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */,
 				43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */,
 				43D44CE72C4177990070EBA3 /* recipeCardFilled.swift */,
 			);
@@ -208,6 +211,7 @@
 				5B15B21D2C3FC5E5009A0D83 /* ChooseInputView.swift in Sources */,
 				43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */,
 				5B15B2232C3FC62E009A0D83 /* ScanResultView.swift in Sources */,
+				438314922C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift in Sources */,
 				43D44CE62C4177220070EBA3 /* recipeCardEmpty.swift in Sources */,
 				5B15B2272C3FC684009A0D83 /* InputCustomPortionView.swift in Sources */,
 				5B15B2042C3EFBD8009A0D83 /* NanoChallenge3App.swift in Sources */,
