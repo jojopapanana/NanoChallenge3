@@ -7,14 +7,12 @@
 
 import SwiftUI
 
-// Define the data structure
 struct SampleImage: Identifiable {
     let id = UUID()
     let title: String
     let imageName: String
 }
 
-// Create the dummy data
 let sampleImages : [SampleImage] = [
     SampleImage(title: "Ahmad", imageName: "kucingjelek"),
     SampleImage(title: "Butet", imageName: "tewas")
