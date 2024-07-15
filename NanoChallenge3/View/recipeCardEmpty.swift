@@ -12,10 +12,8 @@ struct recipeCardEmpty: View {
         HStack(alignment: .center, spacing: 4) {
             // Body/Body 3
             Text("No cake recipe available")
-                .font(
-                    Font.custom("SF Pro", size: 16)
-                        .weight(.light)
-                )
+                .fontWeight(.light)
+                .font(.system(size: 16))
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color(red: 0.42, green: 0.46, blue: 0.49))
         }

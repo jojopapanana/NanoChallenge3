@@ -18,10 +18,8 @@ struct ChooseInputView: View {
                                         .frame(width: 88, height: 66)
                                         .foregroundColor(.white)
                                     Text("Scan")
-                                        .font(
-                                            Font.custom("SF Pro", size: 39)
-                                                .weight(.bold)
-                                        )
+                                        .fontWeight(.bold)
+                                        .font(.system(size: 39))
                                         .multilineTextAlignment(.center)
                                         .foregroundColor(Color(red: 1, green: 1, blue: 1))
                                 }
@@ -31,9 +29,9 @@ struct ChooseInputView: View {
                         .cornerRadius(20)
                 
                 Text("or")
-                    .font(Font.custom("SF Pro", size: 32))
+                    .fontWeight(.bold)
+                    .font(.system(size: 32))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(Color(red: 0.24, green: 0.24, blue: 0.26))
                     .opacity(0.6)
                 
                 VStack(spacing: 20) {
@@ -43,10 +41,8 @@ struct ChooseInputView: View {
                                         .frame(width: 62, height: 66)
                                         .foregroundColor(Color(red: 1, green: 0.22, blue: 0.36))
                                     Text("Manual")
-                                    .font(
-                                    Font.custom("SF Pro", size: 39)
-                                    .weight(.bold)
-                                    )
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 39))
                                     .multilineTextAlignment(.center)
                                     .foregroundColor(Color(red: 1, green: 0.22, blue: 0.36))
                                 }

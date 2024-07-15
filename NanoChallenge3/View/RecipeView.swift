@@ -65,10 +65,8 @@ struct RecipeView: View {
                 }) {
                     HStack(alignment: .center, spacing: 4) {
                         Text("Insert Recipe")
-                            .font(
-                                Font.custom("SF Pro", size: 20)
-                                    .weight(.semibold)
-                            )
+                            .fontWeight(.semibold)
+                            .font(.system(size: 20))
                             .foregroundColor(Constants.GraysWhite)
                     }
                     .padding(.horizontal, 20)

@@ -13,7 +13,7 @@ struct NanoChallenge3App: App {
 
     var body: some Scene {
         WindowGroup {
-            RecipeView()
+            PortionResultView()
         }
     }
 }
