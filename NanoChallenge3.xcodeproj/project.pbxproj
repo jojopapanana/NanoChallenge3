@@ -24,6 +24,11 @@
 		5B15B2252C3FC667009A0D83 /* InputIngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B2242C3FC667009A0D83 /* InputIngredientView.swift */; };
 		5B15B2272C3FC684009A0D83 /* InputCustomPortionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B2262C3FC684009A0D83 /* InputCustomPortionView.swift */; };
 		5B15B2292C3FC69C009A0D83 /* PortionResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */; };
+		F7ADC6BD2C41393E00AEB915 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADC6BC2C41393E00AEB915 /* ImagePicker.swift */; };
+		F7ADC6BF2C413D6000AEB915 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADC6BE2C413D6000AEB915 /* File.swift */; };
+		F7ADC6C12C41473600AEB915 /* SelectedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */; };
+		F7E481E62C44D65600D347FD /* CapturedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E481E52C44D65600D347FD /* CapturedImageView.swift */; };
+		F7E481E82C4506D100D347FD /* StoredImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E481E72C4506D100D347FD /* StoredImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +50,12 @@
 		5B15B2242C3FC667009A0D83 /* InputIngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputIngredientView.swift; sourceTree = "<group>"; };
 		5B15B2262C3FC684009A0D83 /* InputCustomPortionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputCustomPortionView.swift; sourceTree = "<group>"; };
 		5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortionResultView.swift; sourceTree = "<group>"; };
+		F7ADC6BB2C41181900AEB915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F7ADC6BC2C41393E00AEB915 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		F7ADC6BE2C413D6000AEB915 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedImageView.swift; sourceTree = "<group>"; };
+		F7E481E52C44D65600D347FD /* CapturedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturedImageView.swift; sourceTree = "<group>"; };
+		F7E481E72C4506D100D347FD /* StoredImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoredImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +88,9 @@
 		5B15B2022C3EFBD8009A0D83 /* NanoChallenge3 */ = {
 			isa = PBXGroup;
 			children = (
+				F7ADC6BC2C41393E00AEB915 /* ImagePicker.swift */,
+				F7ADC6BB2C41181900AEB915 /* Info.plist */,
 				5B15B2152C3FB417009A0D83 /* View */,
-				5B15B2142C3FB40E009A0D83 /* ViewModel */,
 				5B15B2132C3FB404009A0D83 /* Model */,
 				5B15B2032C3EFBD8009A0D83 /* NanoChallenge3App.swift */,
 				5B15B2092C3EFBDA009A0D83 /* Assets.xcassets */,
@@ -100,15 +112,9 @@
 			children = (
 				5B15B2072C3EFBD8009A0D83 /* Menu.swift */,
 				5B15B2182C3FBE73009A0D83 /* Ingredient.swift */,
+				F7ADC6BE2C413D6000AEB915 /* File.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		5B15B2142C3FB40E009A0D83 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5B15B2152C3FB417009A0D83 /* View */ = {
@@ -123,6 +129,9 @@
 				5B15B2242C3FC667009A0D83 /* InputIngredientView.swift */,
 				5B15B2262C3FC684009A0D83 /* InputCustomPortionView.swift */,
 				5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */,
+				F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */,
+				F7E481E52C44D65600D347FD /* CapturedImageView.swift */,
+				F7E481E72C4506D100D347FD /* StoredImageView.swift */,
 				438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */,
 				43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */,
 				43D44CE72C4177990070EBA3 /* recipeCardFilled.swift */,
@@ -211,10 +220,15 @@
 				5B15B21D2C3FC5E5009A0D83 /* ChooseInputView.swift in Sources */,
 				43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */,
 				5B15B2232C3FC62E009A0D83 /* ScanResultView.swift in Sources */,
+				F7ADC6BD2C41393E00AEB915 /* ImagePicker.swift in Sources */,
+				F7ADC6BF2C413D6000AEB915 /* File.swift in Sources */,
+				F7ADC6C12C41473600AEB915 /* SelectedImageView.swift in Sources */,
+				F7E481E62C44D65600D347FD /* CapturedImageView.swift in Sources */,
 				438314922C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift in Sources */,
 				43D44CE62C4177220070EBA3 /* recipeCardEmpty.swift in Sources */,
 				5B15B2272C3FC684009A0D83 /* InputCustomPortionView.swift in Sources */,
 				5B15B2042C3EFBD8009A0D83 /* NanoChallenge3App.swift in Sources */,
+				F7E481E82C4506D100D347FD /* StoredImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,14 +362,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanoChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 7STQ7T3976;
+				DEVELOPMENT_TEAM = 7ZGNG2S2A2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NanoChallenge3/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = goblok;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,14 +396,19 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanoChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 7STQ7T3976;
+				DEVELOPMENT_TEAM = 7ZGNG2S2A2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NanoChallenge3/Info.plist;
+				INFOPLIST_KEY_NSAppleMusicUsageDescription = goblok;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

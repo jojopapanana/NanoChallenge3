@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import Vision
 
 struct ScanResultView: View {
@@ -66,3 +67,8 @@ struct ScanResultView: View {
 #Preview {
     ScanResultView()
 }
+
+
+
+
+
