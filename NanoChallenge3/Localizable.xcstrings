@@ -1,0 +1,151 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@" : {
+
+    },
+    "0" : {
+
+    },
+    "1. Click start button" : {
+
+    },
+    "2. Allow access camera" : {
+
+    },
+    "3. Scan recipe ingredients" : {
+
+    },
+    "Add more ingredients" : {
+
+    },
+    "Approve camera access to take a picture of the recipe." : {
+
+    },
+    "Back" : {
+
+    },
+    "Change Image" : {
+
+    },
+    "Click the insert recipe button below to add a recipe using the camera." : {
+
+    },
+    "Discard Image" : {
+
+    },
+    "Done" : {
+
+    },
+    "E.g. Cookies" : {
+
+    },
+    "Enter the portions that the recipe yields" : {
+
+    },
+    "Food Image" : {
+
+    },
+    "Full" : {
+
+    },
+    "Ingredients Recipe" : {
+
+    },
+    "Input ingredient name..." : {
+
+    },
+    "Input Recipe" : {
+
+    },
+    "Insert Recipe" : {
+
+    },
+    "Insert your recipe image here" : {
+
+    },
+    "Instructions" : {
+
+    },
+    "Manual" : {
+
+    },
+    "Nama Bahan" : {
+
+    },
+    "Next" : {
+
+    },
+    "No cake recipe available" : {
+
+    },
+    "No image available" : {
+
+    },
+    "or" : {
+
+    },
+    "Please choose a recipe portion unit" : {
+
+    },
+    "Please choose an ingredient" : {
+
+    },
+    "Quantity" : {
+
+    },
+    "Recipe Name" : {
+
+    },
+    "recipe name: %@" : {
+
+    },
+    "Recipe Portion" : {
+
+    },
+    "recipe portion: %lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "recipe portion: %1$lld %2$@"
+          }
+        }
+      }
+    },
+    "recipe price: %lld" : {
+
+    },
+    "Recipes" : {
+
+    },
+    "Recognize" : {
+
+    },
+    "Rp" : {
+
+    },
+    "Satuan" : {
+
+    },
+    "Save" : {
+
+    },
+    "Scan" : {
+
+    },
+    "Select photo" : {
+
+    },
+    "Selling Price" : {
+
+    },
+    "Start" : {
+
+    },
+    "Take photos focusing only on ingredients for easier scanning." : {
+
+    }
+  },
+  "version" : "1.0"
+}

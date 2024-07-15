@@ -7,22 +7,26 @@
 
 import Foundation
 import SwiftData
+import UIKit
 
 @Model
-class Menuu: Identifiable{
+class Recipe: Identifiable{
     var id: String
     var menuName: String
     var portion: Int
     var portionUnit: String
-//    let ingredients = Ingredient(ingredientName: "ingredient", ingredientQuantity: 1, ingredientUnit: "kg")
+    var ingredients:[Ingredient]
     var menuPrice: Int
-    init(menuName: String, portion: Int, portionUnit: String, ingredients: Ingredient, menuPrice: Int) {
+    var imageData: Data?
+    
+    init(menuName: String, portion: Int, portionUnit: String, ingredients: [Ingredient], menuPrice: Int, imageData: Data?) {
         id = UUID().uuidString
         self.menuName = menuName
         self.portion = portion
         self.portionUnit = portionUnit
-//        self.ingredients = ingredients
+        self.ingredients = ingredients
         self.menuPrice = menuPrice
+        self.imageData = imageData
     }
 }
 

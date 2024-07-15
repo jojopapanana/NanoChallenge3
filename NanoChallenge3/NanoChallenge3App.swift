@@ -13,7 +13,7 @@ struct NanoChallenge3App: App {
     var sharedModelContainer: ModelContainer = {
         // Define your schema
         let schema = Schema([
-            Menuu.self,
+            Recipe.self,
             ImageAttribute.self
         ])
         
@@ -27,8 +27,8 @@ struct NanoChallenge3App: App {
 
     var body: some Scene {
         WindowGroup {
-            ScanningView(usingCamera: false)
-                .environment(\.modelContext, sharedModelContainer.mainContext)
+            InputRecipeView()
+                .modelContainer(sharedModelContainer)
         }
     }
 }
