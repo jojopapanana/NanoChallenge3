@@ -2,6 +2,7 @@ import SwiftUI
 import AVFoundation
 import PhotosUI
 import SwiftData
+import Vision
 
 struct ScanningView: View {
     @State var usingCamera: Bool

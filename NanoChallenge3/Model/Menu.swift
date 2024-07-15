@@ -16,13 +16,12 @@ class Menuu: Identifiable{
     var portionUnit: String
 //    let ingredients = Ingredient(ingredientName: "ingredient", ingredientQuantity: 1, ingredientUnit: "kg")
     var menuPrice: Int
-    
-    init(id: String, menuName: String, portion: Int, portionUnit: String, /*ingridents: Ingredient, */menuPrice: Int) {
-        self.id = id
+    init(menuName: String, portion: Int, portionUnit: String, ingredients: Ingredient, menuPrice: Int) {
+        id = UUID().uuidString
         self.menuName = menuName
         self.portion = portion
         self.portionUnit = portionUnit
-//        self.ingredients = ingridents
+//        self.ingredients = ingredients
         self.menuPrice = menuPrice
     }
 }
