@@ -10,11 +10,6 @@ import SwiftData
 import Vision
 
 struct ScanResultView: View {
-    
-//    @State private var fullStringArr: [String] = []
-//    @State private var qtyArr: [String] = []
-//    @State private var satuanArr: [String] = []
-//    @State private var namaBahanArr: [String] = []
 
     @StateObject private var recognizeImage = recognizeText()
     
