@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "%@" : {
 
     },
@@ -16,6 +19,12 @@
     "3. Scan recipe ingredients" : {
 
     },
+    "600" : {
+
+    },
+    "1000" : {
+
+    },
     "Add more ingredients" : {
 
     },
@@ -25,10 +34,19 @@
     "Back" : {
 
     },
+    "Calculate" : {
+
+    },
+    "Calculate Recipe" : {
+
+    },
     "Change Image" : {
 
     },
     "Click the insert recipe button below to add a recipe using the camera." : {
+
+    },
+    "Composition needed to fulfill your target" : {
 
     },
     "Discard Image" : {
@@ -46,7 +64,13 @@
     "Food Image" : {
 
     },
-    "Full" : {
+    "Gas" : {
+
+    },
+    "gr" : {
+
+    },
+    "Ingredients information" : {
 
     },
     "Ingredients Recipe" : {
@@ -70,9 +94,6 @@
     "Manual" : {
 
     },
-    "Nama Bahan" : {
-
-    },
     "Next" : {
 
     },
@@ -91,29 +112,13 @@
     "Please choose an ingredient" : {
 
     },
-    "Quantity" : {
-
-    },
     "Recipe Name" : {
 
     },
-    "recipe name: %@" : {
+    "Recipe portion" : {
 
     },
     "Recipe Portion" : {
-
-    },
-    "recipe portion: %lld %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "recipe portion: %1$lld %2$@"
-          }
-        }
-      }
-    },
-    "recipe price: %lld" : {
 
     },
     "Recipes" : {
@@ -125,7 +130,7 @@
     "Rp" : {
 
     },
-    "Satuan" : {
+    "salted butter" : {
 
     },
     "Save" : {
@@ -144,6 +149,12 @@
 
     },
     "Take photos focusing only on ingredients for easier scanning." : {
+
+    },
+    "Target portion" : {
+
+    },
+    "Your target portion want to make" : {
 
     }
   },

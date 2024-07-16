@@ -1,13 +1,14 @@
 //
-//  InputRecipeView.swift
+//  InputRecipeFromPictView.swift
 //  NanoChallenge3
 //
-//  Created by Jovanna Melissa on 11/07/24.
+//  Created by Hans Zebua on 16/07/24.
 //
 
 import SwiftUI
 
-struct InputRecipeView: View {
+
+struct InputRecipeFromPictView: View {
     @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")]
     @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")
     @State private var recipePortion:Int = 0
@@ -17,6 +18,10 @@ struct InputRecipeView: View {
     @ObservedObject private var vm = InputRecipeViewModel()
     @State private var isPresented = false
     @State private var ingredient: Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+    
+    @StateObject private var recognizeImage = recognizeText()
+    @Environment(\.modelContext) private var modelContext
+    @State private var imageAttributes: ImageAttribute?
     
     var body: some View {
         NavigationView{
@@ -49,16 +54,13 @@ struct InputRecipeView: View {
                         }
                     }
                     .frame(maxHeight: 200)
-                    
-                    Button(action: addIngredient){
-                        HStack{
-                            Image(systemName: "plus.square.fill")
-                            Text("Add more ingredients")
-                                .fontWeight(.semibold)
-                                .font(.body)
-                            Spacer()
-                        }
-                    }
+
+//                    Button {
+//                        recognizeImage.recognizeText()
+//                        addIngredientFromPict()
+//                    } label: {
+//                        Text("Kuy")
+//                    }
                     
                     Text("Recipe Portion")
                         .font(.title)
@@ -112,6 +114,16 @@ struct InputRecipeView: View {
                         .keyboardType(.decimalPad)
                     }
                 }
+                .onAppear {
+                    print("View appeared")
+                    recognizeImage.modelContext = modelContext
+                    recognizeImage.imageAttributes = imageAttributes
+                    recognizeImage.recognizeText()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        print("Calling addIngredientFromPict")
+                        addIngredientFromPict()
+                    }
+                }
                 
                 NavigationLink{
                     InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipePrice: recipeSellingPrice)
@@ -155,12 +167,24 @@ struct InputRecipeView: View {
         .tint(.accentColor)
     }
     
-    private func addIngredient() {
-        ingredients.append(tempIngredient)
-        tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+    private func addIngredientFromPict() {
+        for index in 0..<recognizeImage.namaBahanArr.count {
+            let ingredientName = recognizeImage.namaBahanArr[index]
+            let ingredientQuantity = Int(recognizeImage.qtyArr[index]) ?? 0
+            let ingredientUnit = recognizeImage.satuanArr[index]
+            
+            tempIngredient = Ingredient(ingredientName: ingredientName, ingredientQuantity: ingredientQuantity, ingredientUnit: ingredientUnit)
+            
+            ingredients.append(tempIngredient)
+            
+            tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+        }
     }
+    
+
+
 }
 
-#Preview {
-    InputRecipeView()
-}
+//#Preview {
+//    InputRecipeFromPictView()
+//}
