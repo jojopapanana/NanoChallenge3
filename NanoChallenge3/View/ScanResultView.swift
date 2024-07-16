@@ -25,37 +25,40 @@ struct ScanResultView: View {
                 recognizeImage.imageAttributes = imageAttributes
                 recognizeImage.recognizeText()
             }
-            
-            VStack {
-                Text("Full")
-                List {
-                    ForEach(recognizeImage.fullStringArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
-                }
-                Text("Quantity")
-                List {
-                    ForEach(recognizeImage.qtyArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
-                }
-                Text("Satuan")
-                List {
-                    ForEach(recognizeImage.satuanArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
-                }
-                Text("Nama Bahan")
-                List {
-                    ForEach(recognizeImage.namaBahanArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
-                }
+      
+                
+//                VStack {
+//                    Text("Full")
+//                    List {
+//                        ForEach(recognizeImage.fullStringArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                    Text("Quantity")
+//                    List {
+//                        ForEach(recognizeImage.qtyArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                    Text("Satuan")
+//                    List {
+//                        ForEach(recognizeImage.satuanArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                    Text("Nama Bahan")
+//                    List {
+//                        ForEach(recognizeImage.namaBahanArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                }
             }
+            .padding()
         }
         .onAppear {
             loadImageAttribute()

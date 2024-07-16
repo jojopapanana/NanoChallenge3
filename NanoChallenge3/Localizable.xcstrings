@@ -64,7 +64,13 @@
     "Food Image" : {
 
     },
-    "Full" : {
+    "Gas" : {
+
+    },
+    "gr" : {
+
+    },
+    "Ingredients information" : {
 
     },
     "gr" : {
@@ -94,9 +100,6 @@
     "Manual" : {
 
     },
-    "Nama Bahan" : {
-
-    },
     "Next" : {
 
     },
@@ -118,9 +121,6 @@
     "Please choose an ingredient" : {
 
     },
-    "Quantity" : {
-
-    },
     "Recipe Name" : {
 
     },
@@ -140,7 +140,7 @@
 
     },
     "salted butter" : {
-
+    
     },
     "Satuan" : {
 
