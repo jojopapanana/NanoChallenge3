@@ -8,38 +8,48 @@
 import Foundation
 import UIKit
 import Vision
+import SwiftData
 
 class recognizeText: ObservableObject {
-
     @Published var fullStringArr: [String] = []
     @Published var qtyArr: [String] = []
     @Published var satuanArr: [String] = []
     @Published var namaBahanArr: [String] = []
 
+    var modelContext: ModelContext?
+    var imageAttributes: ImageAttribute?
+
     func recognizeText() {
-        // ngambil image
-        let image = UIImage(resource: .reseppo)
+        guard let modelContext = modelContext else { return }
+        
+        // Fetch the most recent ImageAttribute if not provided
+        if imageAttributes == nil {
+            let fetchRequest = FetchDescriptor<ImageAttribute>()
+            if let fetchedAttributes = try? modelContext.fetch(fetchRequest) {
+                imageAttributes = fetchedAttributes.last
+            }
+        }
+        
+        guard let imageData = imageAttributes?.image,
+              let image = UIImage(data: imageData),
+              let cgImage = image.cgImage else { return }
 
-        // dicek ada isinya gak
-        guard let cgImage = image.cgImage else { return }
-
-        // manggil VNImageRequestHandler yang fungsinya utk mem-process gambar
+        // Create VNImageRequestHandler to process the image
         let handler = VNImageRequestHandler(cgImage: cgImage)
 
-        // manggil VNRecognizeTextRequest yang fungsinya buat recognize text yg ada di gambar
+        // Create VNRecognizeTextRequest to recognize text in the image
         let request = VNRecognizeTextRequest { request, error in
-
             guard error == nil else {
                 print(error?.localizedDescription ?? "")
                 return
             }
 
-            // kita typecast hasil result ke bentuk VNRecognizedTextObservation
+            // Cast results to VNRecognizedTextObservation
             guard let result = request.results as? [VNRecognizedTextObservation] else {
                 return
             }
 
-            // simpen hasilnya di array, terus isi tiap row nanti adalah hasil recognition dengan confidences terbaik
+            // Store the recognition results in an array
             let recogArr = result.compactMap { result in
                 result.topCandidates(1).first?.string
             }
@@ -68,7 +78,7 @@ class recognizeText: ObservableObject {
                 }
             }
 
-            // Use 'self' to indicate that these properties belong to the instance of ScanResultView
+            // Update published properties
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.fullStringArr = processedText
                 self.qtyArr = qtyArr
@@ -77,15 +87,16 @@ class recognizeText: ObservableObject {
             }
         }
 
-        // set recognitionnya accurate
+        // Set recognition level to accurate
         request.recognitionLevel = .accurate
 
-        // panggil handler api image-to-text
+        // Perform the image-to-text request
         do {
             try handler.perform([request])
         } catch {
             print(error.localizedDescription)
         }
     }
-
 }
+// Use 'self' to indicate that these properties belong to the instance of ScanResultView
+

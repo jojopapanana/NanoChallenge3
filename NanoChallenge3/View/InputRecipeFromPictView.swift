@@ -20,6 +20,8 @@ struct InputRecipeFromPictView: View {
     @State private var ingredient: Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
     
     @StateObject private var recognizeImage = recognizeText()
+    @Environment(\.modelContext) private var modelContext
+    @State private var imageAttributes: ImageAttribute?
     
     var body: some View {
         NavigationView{
@@ -113,13 +115,15 @@ struct InputRecipeFromPictView: View {
                     }
                 }
                 .onAppear {
-                                    print("View appeared")
-                                    recognizeImage.recognizeText()
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                        print("Calling addIngredientFromPict")
-                                        addIngredientFromPict()
-                                    }
-                                }
+                    print("View appeared")
+                    recognizeImage.modelContext = modelContext
+                    recognizeImage.imageAttributes = imageAttributes
+                    recognizeImage.recognizeText()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        print("Calling addIngredientFromPict")
+                        addIngredientFromPict()
+                    }
+                }
                 
                 NavigationLink{
                     InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipePrice: recipeSellingPrice)
@@ -176,9 +180,11 @@ struct InputRecipeFromPictView: View {
             tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
         }
     }
+    
+
 
 }
 
-#Preview {
-    InputRecipeFromPictView()
-}
+//#Preview {
+//    InputRecipeFromPictView()
+//}
