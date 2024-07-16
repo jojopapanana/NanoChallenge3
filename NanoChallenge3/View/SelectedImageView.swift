@@ -17,7 +17,7 @@ struct SelectedImageView: View {
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: ScanResultView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                NavigationLink(destination: InputRecipeFromPictView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
                     EmptyView()
                 }
             }
