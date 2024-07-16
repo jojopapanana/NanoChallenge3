@@ -1,10 +1,3 @@
-//
-//  CapturedImage.swift
-//  NanoChallenge3
-//
-//  Created by Geraldo Pannanda Lutan on 12/07/24.
-//
-
 import SwiftUI
 import AVFoundation
 import PhotosUI
@@ -23,21 +16,18 @@ struct SelectedImageView: View {
 
     var body: some View {
         VStack {
-
             HStack {
-                NavigationLink(destination: StoredImageView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                NavigationLink(destination: ScanResultView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
                     EmptyView()
                 }
-                    
             }
             .padding()
             .task(id: selectedPhoto) {
                 if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
                     imageAttribute.image = data
-                    
                 }
             }
-            
+
             Section {
                 if let imageData = imageAttribute.image,
                    let uiImage = UIImage(data: imageData) {
@@ -47,17 +37,21 @@ struct SelectedImageView: View {
                         .frame(height: UIScreen.main.bounds.height * 0.65)
                 }
 
+                Button(action: {
+                    showPhotosPicker = true
+                }) {
+                    Label("Pick photo from gallery", systemImage: "photo")
+                }.photosPicker(isPresented: $showPhotosPicker, selection: $selectedPhoto, matching: .images)
+
                 if selectedPhoto != nil && imageAttribute.image != nil {
                     Button(action: {
                         // Fetch existing ImageAttribute objects
                         let fetchRequest = FetchDescriptor<ImageAttribute>()
                         if let fetchedAttributes = try? modelContext.fetch(fetchRequest) {
-
                             // Delete all existing ImageAttribute objects
                             for attribute in fetchedAttributes {
                                 modelContext.delete(attribute)
                             }
-
                         }
 
                         // Create a new item with the new image
@@ -66,31 +60,22 @@ struct SelectedImageView: View {
 
                         // Append the new item to the existing ones
                         modelContext.insert(newItem)
-                        
-                        navigateToScanResult = true
 
+                        navigateToScanResult = true
                     }) {
                         Label("Select photo", systemImage: "photo")
                     }
 
                     Button(role: .destructive) {
                         removeImage()
-                        
-                        showPhotosPicker = true
                     } label: {
                         Label("Change Image", systemImage: "trash")
-                            
-                    }.photosPicker(isPresented: $showPhotosPicker, selection: $selectedPhoto, matching: .images)
-
+                    }
                 }
-
             }
         }
-        .onAppear {
-            showPhotosPicker = true
-            
-        }.photosPicker(isPresented: $showPhotosPicker, selection: $selectedPhoto, matching: .images)
-
+        .onAppear { }
+        
     }
 
     private func removeImage() {
@@ -98,12 +83,7 @@ struct SelectedImageView: View {
             withAnimation {
                 selectedPhoto = nil
                 imageAttribute.image = nil
-                
             }
         }
     }
-    
-    
 }
-
-
