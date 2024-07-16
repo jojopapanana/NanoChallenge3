@@ -73,6 +73,12 @@
     "Ingredients information" : {
 
     },
+    "gr" : {
+
+    },
+    "Ingredients information" : {
+
+    },
     "Ingredients Recipe" : {
 
     },
@@ -106,6 +112,9 @@
     "or" : {
 
     },
+    "Pick photo from gallery" : {
+
+    },
     "Please choose a recipe portion unit" : {
 
     },
@@ -131,6 +140,9 @@
 
     },
     "salted butter" : {
+    
+    },
+    "Satuan" : {
 
     },
     "Save" : {

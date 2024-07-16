@@ -32,7 +32,7 @@ struct CameraView: View {
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: StoredImageView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                NavigationLink(destination: ScanResultView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
                     EmptyView()
                 }
                 NavigationLink(destination: SelectedImageView().environment(\.modelContext, modelContext), isActive: $navigateToSelectedImage) {

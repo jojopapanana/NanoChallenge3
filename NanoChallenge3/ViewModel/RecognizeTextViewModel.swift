@@ -1,10 +1,3 @@
-//
-//  RecognizeTextViewModel.swift
-//  NanoChallenge3
-//
-//  Created by Jovanna Melissa on 15/07/24.
-//
-
 import Foundation
 import UIKit
 import Vision
@@ -79,7 +72,8 @@ class recognizeText: ObservableObject {
             }
 
             // Update published properties
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.async {
+
                 self.fullStringArr = processedText
                 self.qtyArr = qtyArr
                 self.satuanArr = satuanArr

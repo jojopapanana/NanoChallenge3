@@ -11,23 +11,22 @@ struct CapturedImageView: View {
 
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var showImagePicker: Bool = false
-    @State private var selectedPhoto: PhotosPickerItem?
+//    @State private var selectedPhoto: PhotosPickerItem?
     @State private var navigateToScanResult = false
-    @State private var showPhotosPicker = false
 
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: StoredImageView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                NavigationLink(destination: ScanResultView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
                     EmptyView()
                 }
             }
             .padding()
-            .task(id: selectedPhoto) {
-                if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
-                    imageAttribute.image = data
-                }
-            }
+//            .task(id: selectedPhoto) {
+//                if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
+//                    imageAttribute.image = data
+//                }
+//            }
 
             Section {
                 if let imageData = imageAttribute.image,
@@ -62,7 +61,7 @@ struct CapturedImageView: View {
     private func removeImage() {
         DispatchQueue.main.async {
             withAnimation {
-                selectedPhoto = nil
+//                selectedPhoto = nil
                 imageAttribute.image = nil
             }
         }

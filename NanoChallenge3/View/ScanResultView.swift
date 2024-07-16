@@ -1,34 +1,31 @@
-//
-//  ScanResultView.swift
-//  NanoChallenge3
-//
-//  Created by Jovanna Melissa on 11/07/24.
-//
-
 import SwiftUI
 import SwiftData
 import Vision
 
 struct ScanResultView: View {
+    @Environment(\.modelContext) private var modelContext
+    @State private var imageAttributes: ImageAttribute?
 
     @StateObject private var recognizeImage = recognizeText()
-    
+
     var body: some View {
-        NavigationStack {
-            VStack {
-                Image(.reseppo)
+        VStack {
+            if let imageData = imageAttributes?.image,
+               let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                
-                NavigationLink {
-                    InputRecipeFromPictView()
-                } label: {
-                    Text("Gas")
-                }
-                
-                Button("Recognize") {
-                    recognizeImage.recognizeText()
-                }
+                    .scaledToFit()
+                    .frame(height: UIScreen.main.bounds.height * 0.45)
+            } else {
+                Text("No image available")
+            }
+            
+            Button("Recognize") {
+                recognizeImage.modelContext = modelContext
+                recognizeImage.imageAttributes = imageAttributes
+                recognizeImage.recognizeText()
+            }
+      
                 
 //                VStack {
 //                    Text("Full")
@@ -63,15 +60,17 @@ struct ScanResultView: View {
             }
             .padding()
         }
+        .onAppear {
+            loadImageAttribute()
+        }
+        .padding()
     }
     
+    private func loadImageAttribute() {
+        // Fetch the most recent ImageAttribute
+        let fetchRequest = FetchDescriptor<ImageAttribute>()
+        if let fetchedAttributes = try? modelContext.fetch(fetchRequest) {
+            imageAttributes = fetchedAttributes.last
+        }
+    }
 }
-
-#Preview {
-    ScanResultView()
-}
-
-
-
-
-
