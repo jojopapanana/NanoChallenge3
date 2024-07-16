@@ -69,7 +69,7 @@ class recognizeText: ObservableObject {
             }
 
             // Use 'self' to indicate that these properties belong to the instance of ScanResultView
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.fullStringArr = processedText
                 self.qtyArr = qtyArr
                 self.satuanArr = satuanArr

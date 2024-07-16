@@ -14,47 +14,55 @@ struct ScanResultView: View {
     @StateObject private var recognizeImage = recognizeText()
     
     var body: some View {
-        VStack {
-            Image(.reseppo)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-            
-            Button("Recognize") {
-                recognizeImage.recognizeText()
-            }
-            
+        NavigationStack {
             VStack {
-                Text("Full")
-                List {
-                    ForEach(recognizeImage.fullStringArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
+                Image(.reseppo)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                
+                NavigationLink {
+                    InputRecipeFromPictView()
+                } label: {
+                    Text("Gas")
                 }
-                Text("Quantity")
-                List {
-                    ForEach(recognizeImage.qtyArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
+                
+                Button("Recognize") {
+                    recognizeImage.recognizeText()
                 }
-                Text("Satuan")
-                List {
-                    ForEach(recognizeImage.satuanArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
-                }
-                Text("Nama Bahan")
-                List {
-                    ForEach(recognizeImage.namaBahanArr, id: \.self) { text in
-                        Text(text)
-                            .padding(.bottom, 5)
-                    }
-                }
+                
+//                VStack {
+//                    Text("Full")
+//                    List {
+//                        ForEach(recognizeImage.fullStringArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                    Text("Quantity")
+//                    List {
+//                        ForEach(recognizeImage.qtyArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                    Text("Satuan")
+//                    List {
+//                        ForEach(recognizeImage.satuanArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                    Text("Nama Bahan")
+//                    List {
+//                        ForEach(recognizeImage.namaBahanArr, id: \.self) { text in
+//                            Text(text)
+//                                .padding(.bottom, 5)
+//                        }
+//                    }
+//                }
             }
+            .padding()
         }
-        .padding()
     }
     
 }
