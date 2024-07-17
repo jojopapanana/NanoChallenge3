@@ -72,13 +72,13 @@ class recognizeText: ObservableObject {
             }
 
             // Update published properties
-            DispatchQueue.main.async {
-
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 self.fullStringArr = processedText
                 self.qtyArr = qtyArr
                 self.satuanArr = satuanArr
                 self.namaBahanArr = namaBahanArr
             }
+
         }
 
         // Set recognition level to accurate

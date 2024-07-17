@@ -29,7 +29,7 @@ struct NanoChallenge3App: App {
         WindowGroup {
 //            InputRecipeView()
 //                .modelContainer(sharedModelContainer)
-                        InputRecipeFromPictView()
+                        ScanningView(usingCamera: false)
                             .modelContainer(sharedModelContainer)
         }
     }
