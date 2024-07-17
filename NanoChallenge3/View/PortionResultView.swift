@@ -126,15 +126,15 @@ struct PortionResultView: View {
                 if isButtonClicked{
                     VStack {
                         Text("Ingredients information")
-                            .fontWeight(.semibold)
+                            .fontWeight(.bold)
                             .font(.title3)
-                            .foregroundColor(.infoBlue70)
+                            .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Text("Composition needed to fulfill your target")
                             .fontWeight(.light)
                             .font(.body)
-                            .foregroundColor(.infoBlue50)
+                            .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         VStack{
@@ -142,9 +142,9 @@ struct PortionResultView: View {
                                 HStack(alignment: .center, spacing: 12) {
                                     HStack{
                                         Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.bold)
                                             .font(.title3)
-                                            .foregroundColor(.infoBlue70)
+                                            .foregroundColor(.black)
                                     }
                                     .padding()
                                     .frame(maxWidth: 150, alignment: .leading)
@@ -152,14 +152,14 @@ struct PortionResultView: View {
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
                                         .inset(by: 0.5)
-                                        .stroke(.infoBlue50, lineWidth: 1)
+                                        .stroke(.gray, lineWidth: 1)
                                     )
                                     
                                     HStack{
                                         Text(ingredient.ingredientUnit)
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.bold)
                                             .font(.title3)
-                                            .foregroundColor(.infoBlue70)
+                                            .foregroundColor(.black)
                                     }
                                     .padding()
                                     .frame(width: 68, alignment: .leading)
@@ -172,9 +172,9 @@ struct PortionResultView: View {
                                     
                                     HStack{
                                         Text(ingredient.ingredientName)
-                                            .fontWeight(.semibold)
+                                            .fontWeight(.bold)
                                             .font(.title3)
-                                            .foregroundColor(.infoBlue70)
+                                            .foregroundColor(.black)
                                     }
                                     .padding()
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -182,35 +182,35 @@ struct PortionResultView: View {
                                     .overlay(
                                       RoundedRectangle(cornerRadius: 8)
                                         .inset(by: 0.5)
-                                        .stroke(.infoBlue50, lineWidth: 1)
+                                        .stroke(.gray, lineWidth: 1)
                                     )
                                 }
                             }
                             
                             VStack(alignment: .leading){
                                 Text("Money Earned")
-                                    .fontWeight(.semibold)
+                                    .fontWeight(.bold)
                                     .font(.title3)
-                                    .foregroundColor(.infoBlue70)
+                                    .foregroundColor(.black)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.top, 20)
                                 
                                 Text("Money to be received based on sales")
                                     .fontWeight(.light)
                                     .font(.body)
-                                    .foregroundColor(.infoBlue50)
+                                    .foregroundColor(.black)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 HStack{
                                     Text("Rp")
                                         .fontWeight(.semibold)
                                         .font(.title3)
-                                        .foregroundColor(.infoBlue50)
+                                        .foregroundColor(.gray)
                                     
                                     Text(Double(recipeSellingPrice)*portionMultiplier, format: .number.precision(.fractionLength(2)))
-                                        .fontWeight(.semibold)
+                                        .fontWeight(.bold)
                                         .font(.title3)
-                                        .foregroundColor(.infoBlue70)
+                                        .foregroundColor(.black)
                                 }
                                 .padding()
                                 .frame(width: 361, alignment: .leading)

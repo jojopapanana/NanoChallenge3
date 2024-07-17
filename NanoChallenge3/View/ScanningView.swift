@@ -41,18 +41,6 @@ struct CameraView: View {
                 NavigationLink(destination: CapturedImageView(imageAttribute: $imageAttribute).environment(\.modelContext, modelContext), isActive: $navigateToCapturedImage) {
                     EmptyView()
                 }
-
-                Button(action: {
-                    navigateToScanResult = true
-                }) {
-                    HStack {
-                        Image(systemName: "chevron.backward")
-                        Text("Back")
-                            .font(.title2)
-                            .fontWeight(.light)
-                    }
-                }
-                Spacer()
             }
             .padding()
 
