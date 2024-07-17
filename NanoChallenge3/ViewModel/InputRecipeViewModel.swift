@@ -13,9 +13,6 @@ class InputRecipeViewModel: ObservableObject{
     @Published var menuName: String = ""
     @Published var portion: Int = 0
     @Published var portionUnit: String = ""
-//    @Published var ingredientName: String = ""
-//    @Published var ingredientQuantity: Int = 0
-//    @Published var ingredientUnit: String = ""
     @Published var menuPrice: Int = 0
     @Published var imageData:Data?
     @Published var ingredientList = [Ingredient]()

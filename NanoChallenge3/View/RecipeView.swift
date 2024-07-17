@@ -30,41 +30,43 @@ struct RecipeView: View {
                                     .fontWeight(.light)
                                 
                                 ForEach(recipe.ingredients, id:\.self){ingredient in
-                                    HStack{
+                                    if (ingredient.hashValue <= 3){
                                         HStack{
-                                            Text("\(ingredient.ingredientQuantity)")
+                                            HStack{
+                                                Text("\(ingredient.ingredientQuantity)")
+                                            }
+                                            .padding()
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                    .inset(by: 0.5)
+                                                    .stroke(.gray, lineWidth: 1)
+                                                    .opacity(0.6)
+                                            )
+                                            
+                                            HStack{
+                                                Text(ingredient.ingredientUnit)
+                                            }
+                                            .padding()
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                    .inset(by: 0.5)
+                                                    .stroke(.gray, lineWidth: 1)
+                                                    .opacity(0.6)
+                                            )
+                                            
+                                            HStack{
+                                                Text(ingredient.ingredientName)
+                                            }
+                                            .padding()
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                    .inset(by: 0.5)
+                                                    .stroke(.gray, lineWidth: 1)
+                                                    .opacity(0.6)
+                                            )
                                         }
-                                        .padding()
-                                        .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                .inset(by: 0.5)
-                                                .stroke(.gray, lineWidth: 1)
-                                                .opacity(0.6)
-                                        )
-                                        
-                                        HStack{
-                                            Text(ingredient.ingredientUnit)
-                                        }
-                                        .padding()
-                                        .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                .inset(by: 0.5)
-                                                .stroke(.gray, lineWidth: 1)
-                                                .opacity(0.6)
-                                        )
-                                        
-                                        HStack{
-                                            Text(ingredient.ingredientName)
-                                        }
-                                        .padding()
-                                        .overlay(
-                                                RoundedRectangle(cornerRadius: 8)
-                                                .inset(by: 0.5)
-                                                .stroke(.gray, lineWidth: 1)
-                                                .opacity(0.6)
-                                        )
+                                        .padding(.top, 20)
                                     }
-                                    .padding(.top, 20)
                                 }
                                 
                                 HStack(alignment: .center, spacing: 12){
@@ -90,7 +92,7 @@ struct RecipeView: View {
                                     }
                                     
                                     NavigationLink{
-                                        //To ViewRecipe
+                                        RecipeDetailView(recipe: recipe)
                                     } label: {
                                         VStack{
                                             HStack{

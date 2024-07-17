@@ -132,20 +132,13 @@
 		5B15B2152C3FB417009A0D83 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5BBF06762C47DA0C007A1575 /* ManualViews */,
+				5BBF06752C47D9F4007A1575 /* ScanningViews */,
 				5B61D4AD2C458D88000E5309 /* Components */,
 				5B15B21A2C3FC145009A0D83 /* RecipeView.swift */,
 				5B15B21C2C3FC5E5009A0D83 /* ChooseInputView.swift */,
-				5B15B21E2C3FC5F3009A0D83 /* InputRecipeView.swift */,
-				4383148D2C4356F900E84B26 /* ScanInstructions.swift */,
-				5B15B2202C3FC625009A0D83 /* ScanningView.swift */,
-				5B15B2222C3FC62E009A0D83 /* ScanResultView.swift */,
 				5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */,
-				F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */,
-				F7E481E52C44D65600D347FD /* CapturedImageView.swift */,
-				F7E481E72C4506D100D347FD /* StoredImageView.swift */,
-				5B61D4B32C4590E7000E5309 /* InputRecipeNameView.swift */,
 				5B6E543A2C46D68B009EC347 /* RecipeDetailView.swift */,
-				5B6E543E2C47ADEB009EC347 /* InputRecipeFromPictView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +169,29 @@
 				5B61D4B02C45906C000E5309 /* IngredientRowView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		5BBF06752C47D9F4007A1575 /* ScanningViews */ = {
+			isa = PBXGroup;
+			children = (
+				4383148D2C4356F900E84B26 /* ScanInstructions.swift */,
+				5B15B2202C3FC625009A0D83 /* ScanningView.swift */,
+				5B15B2222C3FC62E009A0D83 /* ScanResultView.swift */,
+				F7E481E52C44D65600D347FD /* CapturedImageView.swift */,
+				F7E481E72C4506D100D347FD /* StoredImageView.swift */,
+				5B6E543E2C47ADEB009EC347 /* InputRecipeFromPictView.swift */,
+				F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */,
+			);
+			path = ScanningViews;
+			sourceTree = "<group>";
+		};
+		5BBF06762C47DA0C007A1575 /* ManualViews */ = {
+			isa = PBXGroup;
+			children = (
+				5B15B21E2C3FC5F3009A0D83 /* InputRecipeView.swift */,
+				5B61D4B32C4590E7000E5309 /* InputRecipeNameView.swift */,
+			);
+			path = ManualViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

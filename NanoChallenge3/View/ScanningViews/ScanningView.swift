@@ -51,7 +51,7 @@ struct CameraView: View {
                 }
             }
 
-            CameraPreview(camera: camera, currentZoomFactor: $currentZoomFactor).frame(height: UIScreen.main.bounds.height * 0.55)
+            CameraPreview(camera: camera, currentZoomFactor: $currentZoomFactor).frame(height: UIScreen.main.bounds.height * 0.6)
 
             Section {
                 HStack {

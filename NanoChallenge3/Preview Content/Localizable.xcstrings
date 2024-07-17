@@ -174,6 +174,7 @@
       }
     },
     "Back" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -384,6 +385,7 @@
       }
     },
     "Hello, World!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -759,6 +761,9 @@
           }
         }
       }
+    },
+    "Recipe Detail" : {
+
     },
     "Recipe Name" : {
       "localizations" : {
