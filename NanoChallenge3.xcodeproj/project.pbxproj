@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		43445AE02C46C974003239A5 /* InputRecipeFromPictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43445ADF2C46C974003239A5 /* InputRecipeFromPictView.swift */; };
 		4383148E2C4356F900E84B26 /* ScanInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383148D2C4356F900E84B26 /* ScanInstructions.swift */; };
 		438314922C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */; };
 		43D44CE62C4177220070EBA3 /* recipeCardEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */; };
@@ -29,6 +28,7 @@
 		5B61D4B42C4590E7000E5309 /* InputRecipeNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61D4B32C4590E7000E5309 /* InputRecipeNameView.swift */; };
 		5B6E54372C46BF8F009EC347 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 5B6E54362C46BF8F009EC347 /* Localizable.xcstrings */; };
 		5B6E543B2C46D68B009EC347 /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E543A2C46D68B009EC347 /* RecipeDetailView.swift */; };
+		5B6E543F2C47ADEB009EC347 /* InputRecipeFromPictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6E543E2C47ADEB009EC347 /* InputRecipeFromPictView.swift */; };
 		F7ADC6BD2C41393E00AEB915 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADC6BC2C41393E00AEB915 /* ImagePicker.swift */; };
 		F7ADC6BF2C413D6000AEB915 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADC6BE2C413D6000AEB915 /* File.swift */; };
 		F7ADC6C12C41473600AEB915 /* SelectedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */; };
@@ -37,7 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		43445ADF2C46C974003239A5 /* InputRecipeFromPictView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputRecipeFromPictView.swift; path = ../../../NanoChallenge3_V3/NanoChallenge3/View/InputRecipeFromPictView.swift; sourceTree = "<group>"; };
 		4383148D2C4356F900E84B26 /* ScanInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanInstructions.swift; sourceTree = "<group>"; };
 		438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortionResultViewDecimalPadModifier.swift; sourceTree = "<group>"; };
 		43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCardEmpty.swift; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		5B61D4B32C4590E7000E5309 /* InputRecipeNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRecipeNameView.swift; sourceTree = "<group>"; };
 		5B6E54362C46BF8F009EC347 /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; name = Localizable.xcstrings; path = "Preview Content/Localizable.xcstrings"; sourceTree = "<group>"; };
 		5B6E543A2C46D68B009EC347 /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		5B6E543E2C47ADEB009EC347 /* InputRecipeFromPictView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRecipeFromPictView.swift; sourceTree = "<group>"; };
 		F7ADC6BB2C41181900AEB915 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F7ADC6BC2C41393E00AEB915 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		F7ADC6BE2C413D6000AEB915 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
@@ -139,13 +139,13 @@
 				4383148D2C4356F900E84B26 /* ScanInstructions.swift */,
 				5B15B2202C3FC625009A0D83 /* ScanningView.swift */,
 				5B15B2222C3FC62E009A0D83 /* ScanResultView.swift */,
-				43445ADF2C46C974003239A5 /* InputRecipeFromPictView.swift */,
 				5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */,
 				F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */,
 				F7E481E52C44D65600D347FD /* CapturedImageView.swift */,
 				F7E481E72C4506D100D347FD /* StoredImageView.swift */,
 				5B61D4B32C4590E7000E5309 /* InputRecipeNameView.swift */,
 				5B6E543A2C46D68B009EC347 /* RecipeDetailView.swift */,
+				5B6E543E2C47ADEB009EC347 /* InputRecipeFromPictView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -260,9 +260,9 @@
 				5B15B21B2C3FC145009A0D83 /* RecipeView.swift in Sources */,
 				5B15B21D2C3FC5E5009A0D83 /* ChooseInputView.swift in Sources */,
 				5B61D4AF2C458F85000E5309 /* InputRecipeViewModel.swift in Sources */,
-				43445AE02C46C974003239A5 /* InputRecipeFromPictView.swift in Sources */,
 				5B61D4B12C45906C000E5309 /* IngredientRowView.swift in Sources */,
 				43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */,
+				5B6E543F2C47ADEB009EC347 /* InputRecipeFromPictView.swift in Sources */,
 				5B15B2232C3FC62E009A0D83 /* ScanResultView.swift in Sources */,
 				5B61D4AA2C4588DC000E5309 /* RecognizeTextViewModel.swift in Sources */,
 				5B6E543B2C46D68B009EC347 /* RecipeDetailView.swift in Sources */,
@@ -411,6 +411,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoChallenge3/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WiseCook;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = goblok;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -445,6 +446,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoChallenge3/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WiseCook;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = goblok;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

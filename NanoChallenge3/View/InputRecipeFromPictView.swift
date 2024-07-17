@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct InputRecipeFromPictView: View {
-    @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")]
+    @State private var ingredients:[Ingredient] = []
     @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")
     @State private var recipePortion:Int = 0
     @State private var recipePortionUnit:String = "gr"
@@ -22,6 +22,8 @@ struct InputRecipeFromPictView: View {
     @StateObject private var recognizeImage = recognizeText()
     @Environment(\.modelContext) private var modelContext
     @State private var imageAttributes: ImageAttribute?
+    @State private var isRowIngredientView = false
+    
     
     var body: some View {
         NavigationView{
@@ -42,12 +44,12 @@ struct InputRecipeFromPictView: View {
                     ScrollView{
                         ForEach(0..<ingredients.count, id: \.self) { index in
                             if(index == 0){
-                                IngredientRowView(ingredient: $ingredients[index])
-                                    .frame(height: 100)
+                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
+                                    .frame(height: 80)
                                     .padding(.top, -15)
                             } else {
-                                IngredientRowView(ingredient: $ingredients[index])
-                                    .frame(height: 100)
+                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
+                                    .frame(height: 80)
                                     .padding(.top, -25)
                             }
                             
