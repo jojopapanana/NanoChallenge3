@@ -12,7 +12,7 @@ struct ChooseInputView: View {
         NavigationStack{
             VStack {
                 NavigationLink{
-                    ScanningView(usingCamera: true)
+                    ScanInstructions()
                 } label: {
                     VStack(spacing: 20) {
                         HStack(spacing: 20) {

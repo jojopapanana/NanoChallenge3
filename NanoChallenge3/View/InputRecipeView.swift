@@ -51,6 +51,7 @@ struct InputRecipeView: View {
                             
                         }
                     }
+                    .tint(.accentColor)
                     .frame(maxHeight: 200)
                     
                     Button(action: addIngredient){
@@ -188,8 +189,8 @@ struct InputRecipeView: View {
                         .cornerRadius(10)
                 }
             }
-        })
-        .tint(.accentColor)
+        }).tint(.accentColor)
+        
     }
     
     private func addIngredient() {

@@ -5,7 +5,6 @@ import SwiftData
 import Vision
 
 struct ScanningView: View {
-    @State var usingCamera: Bool
     var body: some View {
         NavigationView {
             CameraView()
@@ -32,9 +31,6 @@ struct CameraView: View {
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: InputRecipeFromPictView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
-                    EmptyView()
-                }
                 NavigationLink(destination: SelectedImageView().environment(\.modelContext, modelContext), isActive: $navigateToSelectedImage) {
                     EmptyView()
                 }
@@ -42,17 +38,6 @@ struct CameraView: View {
                     EmptyView()
                 }
 
-                Button(action: {
-                    navigateToScanResult = true
-                }) {
-                    HStack {
-                        Image(systemName: "chevron.backward")
-                        Text("Back")
-                            .font(.title2)
-                            .fontWeight(.light)
-                    }
-                }
-                Spacer()
             }
             .padding()
 
@@ -62,17 +47,22 @@ struct CameraView: View {
                     imageSelect = true
                 }
             }
-
+            
+            Spacer().frame(height: 80)
+            
             CameraPreview(camera: camera, currentZoomFactor: $currentZoomFactor).frame(height: UIScreen.main.bounds.height * 0.55)
+            
+            Spacer().frame(height: 40)
 
             Section {
                 HStack {
                     Button(action: {
                         navigateToSelectedImage = true
                     }) {
-                        Image(systemName: "photo.artframe.circle")
+                        Image(systemName: "photo.circle")
                             .resizable()
                             .frame(width: 53.0, height: 53.0)
+                            .foregroundColor(Color.button)
                     }
 
                     Spacer().frame(width: 60.0)
@@ -83,6 +73,7 @@ struct CameraView: View {
                         Image(systemName: "camera.circle")
                             .resizable()
                             .frame(width: 53.0, height: 53.0)
+                            .foregroundColor(Color.button)
                     }
 
                     Spacer().frame(width: 60.0)
@@ -93,10 +84,15 @@ struct CameraView: View {
                         Image(systemName: isFlashlightOn ? "flashlight.on.circle" : "flashlight.off.circle")
                             .resizable()
                             .frame(width: 53.0, height: 53.0)
+                            .foregroundColor(Color.button)
                     }
+                    
+                    
                 }
                 .padding()
+                Spacer().frame(height: 180)
             }
+            
         }
         .onAppear {
             camera.check()

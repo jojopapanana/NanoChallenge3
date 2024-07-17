@@ -67,7 +67,7 @@ struct IngredientRowView: View {
                         ForEach(unitOptions, id:\.self){ unit in
                             Text(unit)
                                 .font(.body)
-                                .foregroundStyle(.black)
+                                
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
@@ -84,6 +84,7 @@ struct IngredientRowView: View {
                     }
                 }
             }
+            .tint(.accentColor)
             .padding()
     }
 }

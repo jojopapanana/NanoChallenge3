@@ -22,11 +22,8 @@ struct CapturedImageView: View {
                 }
             }
             .padding()
-//            .task(id: selectedPhoto) {
-//                if let data = try? await selectedPhoto?.loadTransferable(type: Data.self) {
-//                    imageAttribute.image = data
-//                }
-//            }
+            
+            Spacer().frame(height: 40)
 
             Section {
                 if let imageData = imageAttribute.image,
@@ -41,21 +38,73 @@ struct CapturedImageView: View {
                     Button(action: {
                         handleImage()
                     }) {
-                        Label("Select photo", systemImage: "photo")
-                    }
-
-                    Button(role: .destructive) {
-                        removeImage()
-                        
-                        presentationMode.wrappedValue.dismiss()
-                    } label: {
-                        Label("Discard Image", systemImage: "trash")
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(Color.button)
+                            
+                            HStack{
+                                Image(systemName: "photo")
+                                    .font(.title)
+                                    .fontWeight(.semibold)
+                                
+                                Text("Choose Photo")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                            }
+                            .foregroundStyle(Color.white)
+                        }
+                        .padding()
+                        .frame(width: 361, height: 100)
                     }
                     
+
+                    Button(action: {
+                        removeImage()
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        ZStack {
+                            HStack {
+                                Image(systemName: "trash")
+                                    .font(.title)
+                                    .fontWeight(.semibold)
+                                
+                                Text("Discard Photo")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                            }
+                            .foregroundStyle(Color.button)
+                        }
+                        .padding()
+
+                    }
+                    
+                    
+                    //                        ZStack{
+                    //
+                    //                            HStack{
+                    //                                Image(systemName: "trash")
+                    //                                    .font(.title)
+                    //                                    .fontWeight(.semibold)
+                    //
+                    //                                Text("Discard Photo")
+                    //                                    .fontWeight(.semibold)
+                    //                                    .font(.title2)
+                    //                            }
+                    //                            .border(Color.button)
+                    ////                            .foregroundStyle(Color.button)
+                    //                        }
+                    //                        .padding()
+                    //                        .frame(width: 361, height: 100)
+                    //                        .overlay(
+                    //                            RoundedRectangle(cornerRadius: 20)
+                    //                                .inset(by: 0.5)
+                    //                            .stroke(.button, lineWidth: 1)
+                    //                        )
                 }
             }
+            
+            Spacer().frame(height: 120)
         }
-        .onAppear { }
     }
 
     private func removeImage() {
