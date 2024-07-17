@@ -10,7 +10,7 @@ import SwiftUI
 
 struct InputRecipeFromPictView: View {
     @FocusState private var focusedField:Bool
-    @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")]
+    @State private var ingredients:[Ingredient] = []
     @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
     @State private var recipePortion:Int = 0
     @State private var recipePortionUnit:String = "unit"

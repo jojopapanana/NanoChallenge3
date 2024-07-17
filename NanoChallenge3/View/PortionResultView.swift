@@ -167,7 +167,7 @@ struct PortionResultView: View {
                                     .overlay(
                                       RoundedRectangle(cornerRadius: 8)
                                         .inset(by: 0.5)
-                                        .stroke(.infoBlue50, lineWidth: 1)
+                                        .stroke(.gray, lineWidth: 1)
                                     )
                                     
                                     HStack{
@@ -218,7 +218,7 @@ struct PortionResultView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 8)
                                     .inset(by: 0.5)
-                                    .stroke(.infoBlue50, lineWidth: 1)
+                                    .stroke(.gray, lineWidth: 1)
                                 )
                                 
                                 NavigationLink {

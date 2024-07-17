@@ -30,7 +30,7 @@ struct RecipeView: View {
                                     .fontWeight(.light)
                                 
                                 ForEach(recipe.ingredients, id:\.self){ingredient in
-                                    if (ingredient.hashValue <= 3){
+                                    if (ingredient.hashValue <= 1){
                                         HStack{
                                             HStack{
                                                 Text("\(ingredient.ingredientQuantity)")
