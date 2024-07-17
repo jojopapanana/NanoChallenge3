@@ -17,9 +17,10 @@ struct PortionResultView: View {
     var recipeSellingPrice:Int
     var ingredients:[Ingredient]
     @State private var portionMultiplier = 0.0
+    @Binding var navigationPath:NavigationPath
     
     var body: some View {
-        NavigationView{
+//        NavigationView{
             ScrollView{
                 VStack(alignment: .leading, spacing: 20) {
                     if !isButtonClicked{
@@ -221,22 +222,34 @@ struct PortionResultView: View {
                                     .stroke(.gray, lineWidth: 1)
                                 )
                                 
-                                NavigationLink {
-                                    RecipeView()
-                                } label: {
-                                    ZStack{
-                                        RoundedRectangle(cornerRadius: 10.0)
-                                        
-                                        Text("Back to recipe page")
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                            .foregroundStyle(Color.white)
-                                    }
-                                    .frame(width: 361, height: 60)
-                                    .padding(.top, 20)
-                                }
-                                .tint(.accentColor)
-                                .padding(.top, 20)
+                                Button(action: {
+                                                navigationPath = NavigationPath() // Reset the path to the root
+                                            }) {
+                                                Text("Back to Recipe Page")
+                                                    .font(.title3)
+                                                    .fontWeight(.semibold)
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                                    .frame(width: 361, height: 60)
+                                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.accentColor))
+                                            }
+                                
+//                                NavigationLink {
+//                                    RecipeView()
+//                                } label: {
+//                                    ZStack{
+//                                        RoundedRectangle(cornerRadius: 10.0)
+//                                        
+//                                        Text("Back to recipe page")
+//                                            .font(.title3)
+//                                            .fontWeight(.semibold)
+//                                            .foregroundStyle(Color.white)
+//                                    }
+//                                    .frame(width: 361, height: 60)
+//                                    .padding(.top, 20)
+//                                }
+//                                .tint(.accentColor)
+//                                .padding(.top, 20)
                             }
                         }
                     }
@@ -266,23 +279,11 @@ struct PortionResultView: View {
             .onAppear {
                 UITextField.appearance().clearButtonMode = .whileEditing
             }
-//            .toolbar {
-//                ToolbarItem(placement: .keyboard) {
-//                    Spacer()
-//                }
-//                ToolbarItem(placement: .keyboard) {
-//                    Button {
-//                        focusedField = nil
-//                    } label: {
-//                        Text("Done")
-//                    }
-//                }
-//            }
-        }
+//        }
         .navigationTitle("Calculate Recipe")
     }
 }
 
-#Preview {
-    PortionResultView(recipePortion: 0, recipePortionUnit: "gr", recipeSellingPrice: 0, ingredients: [Ingredient(ingredientName: "sugar", ingredientQuantity: 100, ingredientUnit: "gr")])
-}
+//#Preview {
+//    PortionResultView(recipePortion: 0, recipePortionUnit: "gr", recipeSellingPrice: 0, ingredients: [Ingredient(ingredientName: "sugar", ingredientQuantity: 100, ingredientUnit: "gr")])
+//}

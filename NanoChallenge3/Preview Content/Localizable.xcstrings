@@ -195,6 +195,16 @@
         }
       }
     },
+    "Back to Recipe Page" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kembali ke halaman reseo"
+          }
+        }
+      }
+    },
     "baking powder" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -696,7 +706,14 @@
       }
     },
     "Pick photo from gallery" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ambil foto dari galeri"
+          }
+        }
+      }
     },
     "Please choose a recipe portion unit" : {
       "localizations" : {
@@ -763,7 +780,14 @@
       }
     },
     "Recipe Detail" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detil resep"
+          }
+        }
+      }
     },
     "Recipe Name" : {
       "localizations" : {

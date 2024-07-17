@@ -9,19 +9,20 @@ import SwiftUI
 
 
 struct InputRecipeFromPictView: View {
-    @FocusState private var focusedField:Bool
-    @State private var ingredients:[Ingredient] = []
-    @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
-    @State private var recipePortion:Int = 0
-    @State private var recipePortionUnit:String = "unit"
-    private var portionUnit = ["unit", "gr", "kg", "pc"]
-    @State private var recipeSellingPrice = 0
-    @State private var isPresented = false
-    @State private var isRowIngredientView = false
+    @FocusState var focusedField:Bool
+    @State var ingredients:[Ingredient] = []
+    @State var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
+    @State var recipePortion:Int = 0
+    @State var recipePortionUnit:String = "unit"
+    var portionUnit = ["unit", "gr", "kg", "pc"]
+    @State var recipeSellingPrice = 0
+    @State var isPresented = false
+    @State var isRowIngredientView = false
     
-    @StateObject private var recognizeImage = recognizeText()
-    @Environment(\.modelContext) private var modelContext
-    @State private var imageAttributes: ImageAttribute?
+    @StateObject var recognizeImage = recognizeText()
+    @Environment(\.modelContext) var modelContext
+    @State var imageAttributes: ImageAttribute?
+    @Binding var navigationPath:NavigationPath
     
     var body: some View {
         NavigationStack{
@@ -144,7 +145,7 @@ struct InputRecipeFromPictView: View {
                 }
                 
                 NavigationLink{
-                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipePrice: recipeSellingPrice)
+                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipePrice: recipeSellingPrice, navigationPath: $navigationPath)
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10.0)

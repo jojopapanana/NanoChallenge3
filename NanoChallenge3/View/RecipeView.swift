@@ -10,9 +10,10 @@ import SwiftData
 
 struct RecipeView: View {
     @Query private var recipes:[Recipe]
+    @State private var navigationPath = NavigationPath()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath){
             VStack {
                 if recipes.isEmpty {
                     recipeCardEmpty()
@@ -126,30 +127,48 @@ struct RecipeView: View {
                 }
 
                 Spacer()
-
-                NavigationLink {
-                    ChooseInputView()
-                } label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundStyle(Color.button)
-                        
-                        HStack{
-                            Image(systemName: "plus.square")
-                                .font(.title)
-                                .fontWeight(.semibold)
-                            
-                            Text("Insert Recipe")
-                                .fontWeight(.semibold)
-                                .font(.title2)
-                        }
-                        .foregroundStyle(Color.white)
-                    }
-                    .padding()
-                    .frame(width: 361, height: 100)
+                
+                NavigationLink(value: "ChooseInputView") {
+                                    VStack {
+                                        Text("Insert Recipe")
+                                            .foregroundColor(.white)
+                                            .font(.title3)
+                                            .fontWeight(.semibold)
+                                    }
+                                    .padding()
+                                    .frame(width: 361, height: 60)
+                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.accentColor))
                 }
+
+//                NavigationLink {
+//                    ChooseInputView()
+//                } label: {
+//                    ZStack{
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .foregroundStyle(Color.button)
+//                        
+//                        HStack{
+//                            Image(systemName: "plus.square")
+//                                .font(.title)
+//                                .fontWeight(.semibold)
+//                            
+//                            Text("Insert Recipe")
+//                                .fontWeight(.semibold)
+//                                .font(.title2)
+//                        }
+//                        .foregroundStyle(Color.white)
+//                    }
+//                    .padding()
+//                    .frame(width: 361, height: 100)
+//                }
             }
             .navigationTitle("Recipes")
+            .navigationDestination(for: String.self) { value in
+                    if value == "ChooseInputView" {
+                        ChooseInputView(navigationPath: $navigationPath)
+                    }
+                            // Add other destinations if needed
+            }
 //            .padding(.top, 10)
         }
     }

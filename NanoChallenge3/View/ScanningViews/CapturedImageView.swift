@@ -13,11 +13,12 @@ struct CapturedImageView: View {
     @State private var showImagePicker: Bool = false
 //    @State private var selectedPhoto: PhotosPickerItem?
     @State private var navigateToScanResult = false
+    @Binding var navigationPath:NavigationPath
 
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: InputRecipeFromPictView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                NavigationLink(destination: InputRecipeFromPictView(navigationPath:$navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
                     EmptyView()
                 }
             }

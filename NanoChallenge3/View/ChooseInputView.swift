@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ChooseInputView: View {
+    @Binding var navigationPath: NavigationPath
+    
     var body: some View {
-        NavigationStack{
+//        NavigationStack{
             VStack {
                 NavigationLink{
-                    ScanningView(usingCamera: true)
+                    ScanningView(usingCamera: true, navigationPath: $navigationPath)
                 } label: {
                     VStack(spacing: 20) {
                         HStack(spacing: 20) {
@@ -39,7 +41,7 @@ struct ChooseInputView: View {
                     .opacity(0.6)
                 
                 NavigationLink{
-                    InputRecipeView()
+                    InputRecipeView(navigationPath: $navigationPath)
                 } label: {
                     VStack(spacing: 20) {
                         HStack(spacing: 20) {
@@ -65,10 +67,10 @@ struct ChooseInputView: View {
                 }
             }
             .navigationTitle("Input Recipe")
-        }
+//        }
     }
 }
 
-#Preview {
-    ChooseInputView()
-}
+//#Preview {
+//    ChooseInputView()
+//}

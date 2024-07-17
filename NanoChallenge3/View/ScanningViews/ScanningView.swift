@@ -6,14 +6,16 @@ import Vision
 
 struct ScanningView: View {
     @State var usingCamera: Bool
+    @Binding var navigationPath:NavigationPath
     var body: some View {
-        NavigationView {
-            CameraView()
+        VStack {
+            CameraView(navigationPath: $navigationPath)
         }
     }
 }
 
 struct CameraView: View {
+    @Binding var navigationPath:NavigationPath
     @Environment(\.modelContext) private var modelContext
 
     @StateObject var camera = CameraModel()
@@ -32,13 +34,13 @@ struct CameraView: View {
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: InputRecipeFromPictView().environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                NavigationLink(destination: InputRecipeFromPictView(navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
                     EmptyView()
                 }
-                NavigationLink(destination: SelectedImageView().environment(\.modelContext, modelContext), isActive: $navigateToSelectedImage) {
+                NavigationLink(destination: SelectedImageView(navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToSelectedImage) {
                     EmptyView()
                 }
-                NavigationLink(destination: CapturedImageView(imageAttribute: $imageAttribute).environment(\.modelContext, modelContext), isActive: $navigateToCapturedImage) {
+                NavigationLink(destination: CapturedImageView(imageAttribute: $imageAttribute, navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToCapturedImage) {
                     EmptyView()
                 }
             }
