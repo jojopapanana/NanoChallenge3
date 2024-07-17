@@ -1,30 +1,38 @@
 //
-//  InputRecipeView.swift
+//  InputRecipeFromPictView.swift
 //  NanoChallenge3
 //
-//  Created by Jovanna Melissa on 11/07/24.
+//  Created by Hans Zebua on 16/07/24.
 //
 
 import SwiftUI
 
-struct InputRecipeView: View {
-    
-    @FocusState private var focusedField:Bool
-    @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")]
-    @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
+
+struct InputRecipeFromPictView: View {
+    @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")]
+    @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")
     @State private var recipePortion:Int = 0
-    @State private var recipePortionUnit:String = "unit"
+    @State private var recipePortionUnit:String = "gr"
     private var portionUnit = ["unit", "gr", "kg", "pc"]
     @State private var recipeSellingPrice = 0
+    @ObservedObject private var vm = InputRecipeViewModel()
     @State private var isPresented = false
-    @State private var isRowIngredientView = false
+    @State private var ingredient: Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+    
+    @StateObject private var recognizeImage = recognizeText()
+    @Environment(\.modelContext) private var modelContext
+    @State private var imageAttributes: ImageAttribute?
     
     var body: some View {
-        NavigationStack{
+        NavigationView{
             ScrollView{
                 VStack(alignment: .leading){
+                    Text("Insert Recipe")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.bottom, 16)
+                    
                     Image("Progress")
-                        .padding(.top, 20)
                     
                     Text("Ingredients Recipe")
                         .font(.title)
@@ -34,34 +42,25 @@ struct InputRecipeView: View {
                     ScrollView{
                         ForEach(0..<ingredients.count, id: \.self) { index in
                             if(index == 0){
-                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
-                                    .frame(height: 80)
+                                IngredientRowView(ingredient: $ingredients[index])
+                                    .frame(height: 100)
                                     .padding(.top, -15)
-                                    .onTapGesture {
-                                        isRowIngredientView = true
-                                    }
                             } else {
-                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
-                                    .frame(height: 80)
+                                IngredientRowView(ingredient: $ingredients[index])
+                                    .frame(height: 100)
                                     .padding(.top, -25)
-                                    .onTapGesture {
-                                        isRowIngredientView = true
-                                    }
                             }
                             
                         }
                     }
                     .frame(maxHeight: 200)
-                    
-                    Button(action: addIngredient){
-                        HStack{
-                            Image(systemName: "plus.square.fill")
-                            Text("Add more ingredients")
-                                .fontWeight(.semibold)
-                                .font(.body)
-                            Spacer()
-                        }
-                    }
+
+//                    Button {
+//                        recognizeImage.recognizeText()
+//                        addIngredientFromPict()
+//                    } label: {
+//                        Text("Kuy")
+//                    }
                     
                     Text("Recipe Portion")
                         .font(.title)
@@ -71,29 +70,13 @@ struct InputRecipeView: View {
                         .font(.body)
                     
                     HStack{
-                        HStack(alignment: .center, spacing: 8) {
-                            TextField(
-                                "",
-                                value: $recipePortion,
-                                format: .number
-                            )
-                            .keyboardType(.decimalPad)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .focused($focusedField)
-                            .onTapGesture {
-                                isRowIngredientView = false
-                            }
-                        }
-                        .padding()
-                        .frame(width: 256, height: 75, alignment: .leading)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
+                        TextField(
+                            "0",
+                            value: $recipePortion,
+                            format: .number
                         )
-                        .cornerRadius(4)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.decimalPad)
                         
                         Button{
                             isPresented.toggle()
@@ -105,17 +88,11 @@ struct InputRecipeView: View {
                                 Text("\(recipePortionUnit)")
                             }
                             .frame(width: 80, height: 30)
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(.gray, lineWidth: 1)
+                            )
                         }
-                        .padding()
-                        .frame(width: 80, height: 75, alignment: .center)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
-                        )
-                        .cornerRadius(4)
-                        .buttonStyle(PlainButtonStyle())
                     }
                     
                     Text("Selling Price")
@@ -135,7 +112,16 @@ struct InputRecipeView: View {
                         )
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.decimalPad)
-                        .focused($focusedField)
+                    }
+                }
+                .onAppear {
+                    print("View appeared")
+                    recognizeImage.modelContext = modelContext
+                    recognizeImage.imageAttributes = imageAttributes
+                    recognizeImage.recognizeText()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        print("Calling addIngredientFromPict")
+                        addIngredientFromPict()
                     }
                 }
                 
@@ -154,17 +140,6 @@ struct InputRecipeView: View {
                 }
                 .disabled(ingredients.isEmpty || recipePortion == 0 || recipeSellingPrice == 0)
             }
-            .toolbar {
-                if(!isRowIngredientView){
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            focusedField = false
-                        }
-                    }
-                }
-            }
-            .navigationTitle("Insert Recipe")
         }
         .padding()
         .sheet(isPresented: $isPresented, content: {
@@ -192,12 +167,24 @@ struct InputRecipeView: View {
         .tint(.accentColor)
     }
     
-    private func addIngredient() {
-        ingredients.append(tempIngredient)
-        tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
+    private func addIngredientFromPict() {
+        for index in 0..<recognizeImage.namaBahanArr.count {
+            let ingredientName = recognizeImage.namaBahanArr[index]
+            let ingredientQuantity = Int(recognizeImage.qtyArr[index]) ?? 0
+            let ingredientUnit = recognizeImage.satuanArr[index]
+            
+            tempIngredient = Ingredient(ingredientName: ingredientName, ingredientQuantity: ingredientQuantity, ingredientUnit: ingredientUnit)
+            
+            ingredients.append(tempIngredient)
+            
+            tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+        }
     }
+    
+
+
 }
 
-#Preview {
-    InputRecipeView()
-}
+//#Preview {
+//    InputRecipeFromPictView()
+//}

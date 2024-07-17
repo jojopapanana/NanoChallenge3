@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		43445AE02C46C974003239A5 /* InputRecipeFromPictView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43445ADF2C46C974003239A5 /* InputRecipeFromPictView.swift */; };
 		4383148E2C4356F900E84B26 /* ScanInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383148D2C4356F900E84B26 /* ScanInstructions.swift */; };
 		438314922C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */; };
 		43D44CE62C4177220070EBA3 /* recipeCardEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		43445ADF2C46C974003239A5 /* InputRecipeFromPictView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InputRecipeFromPictView.swift; path = ../../../NanoChallenge3_V3/NanoChallenge3/View/InputRecipeFromPictView.swift; sourceTree = "<group>"; };
 		4383148D2C4356F900E84B26 /* ScanInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanInstructions.swift; sourceTree = "<group>"; };
 		438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortionResultViewDecimalPadModifier.swift; sourceTree = "<group>"; };
 		43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCardEmpty.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				4383148D2C4356F900E84B26 /* ScanInstructions.swift */,
 				5B15B2202C3FC625009A0D83 /* ScanningView.swift */,
 				5B15B2222C3FC62E009A0D83 /* ScanResultView.swift */,
+				43445ADF2C46C974003239A5 /* InputRecipeFromPictView.swift */,
 				5B15B2282C3FC69C009A0D83 /* PortionResultView.swift */,
 				F7ADC6C02C41473600AEB915 /* SelectedImageView.swift */,
 				F7E481E52C44D65600D347FD /* CapturedImageView.swift */,
@@ -257,6 +260,7 @@
 				5B15B21B2C3FC145009A0D83 /* RecipeView.swift in Sources */,
 				5B15B21D2C3FC5E5009A0D83 /* ChooseInputView.swift in Sources */,
 				5B61D4AF2C458F85000E5309 /* InputRecipeViewModel.swift in Sources */,
+				43445AE02C46C974003239A5 /* InputRecipeFromPictView.swift in Sources */,
 				5B61D4B12C45906C000E5309 /* IngredientRowView.swift in Sources */,
 				43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */,
 				5B15B2232C3FC62E009A0D83 /* ScanResultView.swift in Sources */,
@@ -403,7 +407,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanoChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 7STQ7T3976;
+				DEVELOPMENT_TEAM = 7ZGNG2S2A2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoChallenge3/Info.plist;
@@ -437,7 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NanoChallenge3/Preview Content\"";
-				DEVELOPMENT_TEAM = 7STQ7T3976;
+				DEVELOPMENT_TEAM = 7ZGNG2S2A2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoChallenge3/Info.plist;

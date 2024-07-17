@@ -85,6 +85,12 @@
         }
       }
     },
+    "600" : {
+
+    },
+    "1000" : {
+
+    },
     "Add more ingredients" : {
       "localizations" : {
         "id" : {
@@ -212,6 +218,12 @@
         }
       }
     },
+    "Calculate" : {
+
+    },
+    "Calculate Recipe" : {
+
+    },
     "Change Image" : {
       "localizations" : {
         "id" : {
@@ -252,6 +264,9 @@
           }
         }
       }
+    },
+    "Composition needed to fulfill your target" : {
+
     },
     "Discard Image" : {
       "localizations" : {
@@ -528,9 +543,6 @@
         }
       }
     },
-    "Nama Bahan" : {
-
-    },
     "Next" : {
       "localizations" : {
         "id" : {
@@ -597,10 +609,10 @@
         }
       }
     },
-    "Please choose a recipe portion unit" : {
+    "Pick photo from gallery" : {
 
     },
-    "Please choose an ingredient" : {
+    "Please choose a recipe portion unit" : {
 
     },
     "powdered sugar" : {
@@ -735,6 +747,9 @@
           }
         }
       }
+    },
+    "salted butter" : {
+    
     },
     "Satuan" : {
 
