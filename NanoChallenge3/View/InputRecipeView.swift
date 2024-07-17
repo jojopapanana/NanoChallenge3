@@ -8,26 +8,23 @@
 import SwiftUI
 
 struct InputRecipeView: View {
-    @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")]
-    @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "gr")
+    
+    @FocusState private var focusedField:Bool
+    @State private var ingredients:[Ingredient] = [Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")]
+    @State private var tempIngredient:Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
     @State private var recipePortion:Int = 0
-    @State private var recipePortionUnit:String = "gr"
+    @State private var recipePortionUnit:String = "unit"
     private var portionUnit = ["unit", "gr", "kg", "pc"]
     @State private var recipeSellingPrice = 0
-    @ObservedObject private var vm = InputRecipeViewModel()
     @State private var isPresented = false
-    @State private var ingredient: Ingredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+    @State private var isRowIngredientView = false
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
-                    Text("Insert Recipe")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.bottom, 16)
-                    
                     Image("Progress")
+                        .padding(.top, 20)
                     
                     Text("Ingredients Recipe")
                         .font(.title)
@@ -37,13 +34,19 @@ struct InputRecipeView: View {
                     ScrollView{
                         ForEach(0..<ingredients.count, id: \.self) { index in
                             if(index == 0){
-                                IngredientRowView(ingredient: $ingredients[index])
-                                    .frame(height: 100)
+                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
+                                    .frame(height: 80)
                                     .padding(.top, -15)
+                                    .onTapGesture {
+                                        isRowIngredientView = true
+                                    }
                             } else {
-                                IngredientRowView(ingredient: $ingredients[index])
-                                    .frame(height: 100)
+                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
+                                    .frame(height: 80)
                                     .padding(.top, -25)
+                                    .onTapGesture {
+                                        isRowIngredientView = true
+                                    }
                             }
                             
                         }
@@ -68,13 +71,29 @@ struct InputRecipeView: View {
                         .font(.body)
                     
                     HStack{
-                        TextField(
-                            "0",
-                            value: $recipePortion,
-                            format: .number
+                        HStack(alignment: .center, spacing: 8) {
+                            TextField(
+                                "",
+                                value: $recipePortion,
+                                format: .number
+                            )
+                            .keyboardType(.decimalPad)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .focused($focusedField)
+                            .onTapGesture {
+                                isRowIngredientView = false
+                            }
+                        }
+                        .padding()
+                        .frame(width: 256, height: 75, alignment: .leading)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                            .inset(by: 0.5)
+                            .stroke(.gray, lineWidth: 1)
+                            .opacity(0.6)
                         )
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.decimalPad)
+                        .cornerRadius(4)
                         
                         Button{
                             isPresented.toggle()
@@ -86,11 +105,17 @@ struct InputRecipeView: View {
                                 Text("\(recipePortionUnit)")
                             }
                             .frame(width: 80, height: 30)
-                            .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(.gray, lineWidth: 1)
-                            )
                         }
+                        .padding()
+                        .frame(width: 80, height: 75, alignment: .center)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                            .inset(by: 0.5)
+                            .stroke(.gray, lineWidth: 1)
+                            .opacity(0.6)
+                        )
+                        .cornerRadius(4)
+                        .buttonStyle(PlainButtonStyle())
                     }
                     
                     Text("Selling Price")
@@ -110,6 +135,7 @@ struct InputRecipeView: View {
                         )
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.decimalPad)
+                        .focused($focusedField)
                     }
                 }
                 
@@ -128,6 +154,17 @@ struct InputRecipeView: View {
                 }
                 .disabled(ingredients.isEmpty || recipePortion == 0 || recipeSellingPrice == 0)
             }
+            .toolbar {
+                if(!isRowIngredientView){
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            focusedField = false
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Insert Recipe")
         }
         .padding()
         .sheet(isPresented: $isPresented, content: {
@@ -157,7 +194,7 @@ struct InputRecipeView: View {
     
     private func addIngredient() {
         ingredients.append(tempIngredient)
-        tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "")
+        tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
     }
 }
 

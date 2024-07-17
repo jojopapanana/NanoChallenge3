@@ -8,56 +8,119 @@
 import SwiftUI
 import SwiftData
 
-struct SampleImage: Identifiable {
-    let id = UUID()
-    let title: String
-    let imageName: String
-}
-
-let sampleImages : [SampleImage] = [
-    SampleImage(title: "Ahmad", imageName: "kucingjelek"),
-    SampleImage(title: "Butet", imageName: "tewas")
-]
-struct Constants {
-static let GraysWhite: Color = .white
-}
-
 struct RecipeView: View {
     @Query private var recipes:[Recipe]
     
     var body: some View {
         NavigationStack {
             VStack {
-                if sampleImages.isEmpty {
-                                    recipeCardEmpty()
+                if recipes.isEmpty {
+                    recipeCardEmpty()
                 } else {
                     TabView {
-                        ForEach(sampleImages) { sampleImage in
-                            VStack (alignment: .leading){
-                                Image(sampleImage.imageName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 361, height: 257)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                                    .shadow(radius: 10)
-                                    .padding(10)
-                                    
-                                Text(sampleImage.title)
+                        ForEach(recipes.reversed()){recipe in
+                            VStack(alignment: .leading){
+                                Text(recipe.menuName)
                                     .font(.title)
-                                    .padding(.bottom, 20)
-                                    .padding(.horizontal, 20)
-                                    .foregroundColor(Color(red: 0.42, green: 0.46, blue: 0.49))
+                                    .fontWeight(.bold)
+                                    .padding(.top, 20)
+                                
+                                Text("\(recipe.portion) \(recipe.portionUnit)")
+                                    .font(.title2)
+                                    .fontWeight(.light)
+                                
+                                ForEach(recipe.ingredients, id:\.self){ingredient in
+                                    HStack{
+                                        HStack{
+                                            Text("\(ingredient.ingredientQuantity)")
+                                        }
+                                        .padding()
+                                        .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                .inset(by: 0.5)
+                                                .stroke(.gray, lineWidth: 1)
+                                                .opacity(0.6)
+                                        )
+                                        
+                                        HStack{
+                                            Text(ingredient.ingredientUnit)
+                                        }
+                                        .padding()
+                                        .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                .inset(by: 0.5)
+                                                .stroke(.gray, lineWidth: 1)
+                                                .opacity(0.6)
+                                        )
+                                        
+                                        HStack{
+                                            Text(ingredient.ingredientName)
+                                        }
+                                        .padding()
+                                        .overlay(
+                                                RoundedRectangle(cornerRadius: 8)
+                                                .inset(by: 0.5)
+                                                .stroke(.gray, lineWidth: 1)
+                                                .opacity(0.6)
+                                        )
+                                    }
+                                    .padding(.top, 20)
+                                }
+                                
+                                HStack(alignment: .center, spacing: 12){
+                                    NavigationLink{
+                                        //To converter view
+                                    } label: {
+                                        VStack{
+                                            HStack{
+                                                Image(systemName: "scalemass.fill")
+                                                    .fontWeight(.bold)
+                                                    .foregroundStyle(.button)
+                                            }
+                                            .frame(width: 30)
+                                            .padding()
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                    .inset(by: 0.5)
+                                                    .stroke(.button, lineWidth: 1)
+                                                    .opacity(0.6)
+                                            )
+                                        }
+                                        .padding(.top, 20)
+                                    }
+                                    
+                                    NavigationLink{
+                                        //To ViewRecipe
+                                    } label: {
+                                        VStack{
+                                            HStack{
+                                                Text("View Recipe")
+                                                    .fontWeight(.bold)
+                                                    .foregroundStyle(.button)
+                                            }
+                                            .frame(width: 220)
+                                            .padding()
+                                            .overlay(
+                                                    RoundedRectangle(cornerRadius: 8)
+                                                    .inset(by: 0.5)
+                                                    .stroke(.button, lineWidth: 1)
+                                                    .opacity(0.6)
+                                            )
+                                        }
+                                        .padding(.top, 20)
+                                    }
+                                }
+                                .padding()
+                                .frame(width: 312)
                             }
-                            .background(Color(Color(Color(red: 0.6, green: 0.64, blue: 0.67))))
+                            .padding()
+                            .frame(width: 344, height: 446, alignment: .leading)
+                            .background(.recipeBackground)
                             .cornerRadius(20)
-                            .shadow(radius: 5)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
                         }
                     }
                     .tabViewStyle(.page)
                     .indexViewStyle(.page(backgroundDisplayMode: .always))
-                    .padding(.bottom, 50)
                 }
 
                 Spacer()
@@ -69,17 +132,23 @@ struct RecipeView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundStyle(Color.button)
                         
-                        Text("Insert Recipe")
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.white)
-                            .font(.title2)
+                        HStack{
+                            Image(systemName: "plus.square")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                            
+                            Text("Insert Recipe")
+                                .fontWeight(.semibold)
+                                .font(.title2)
+                        }
+                        .foregroundStyle(Color.white)
                     }
                     .padding()
                     .frame(width: 361, height: 100)
                 }
             }
             .navigationTitle("Recipes")
-            .padding(.top, 10)
+//            .padding(.top, 10)
         }
     }
 }

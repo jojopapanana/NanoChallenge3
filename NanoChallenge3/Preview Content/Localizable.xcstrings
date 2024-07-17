@@ -6,7 +6,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "."
           }
         }
       }
@@ -23,7 +23,40 @@
       }
     },
     "%@" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%2$@"
+          }
+        }
+      }
     },
     "0" : {
       "localizations" : {
@@ -66,6 +99,7 @@
       }
     },
     "600" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -76,6 +110,7 @@
       }
     },
     "1000" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -84,12 +119,6 @@
           }
         }
       }
-    },
-    "600" : {
-
-    },
-    "1000" : {
-
     },
     "Add more ingredients" : {
       "localizations" : {
@@ -202,7 +231,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Menghitung resep"
+            "value" : "Kalkulasi Resep"
           }
         }
       }
@@ -218,18 +247,12 @@
         }
       }
     },
-    "Calculate" : {
-
-    },
-    "Calculate Recipe" : {
-
-    },
     "Change Image" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mengubah gambar"
+            "value" : "Ubah Gambar"
           }
         }
       }
@@ -265,15 +288,12 @@
         }
       }
     },
-    "Composition needed to fulfill your target" : {
-
-    },
     "Discard Image" : {
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Batalkan gambar"
+            "value" : "Batalkan Gambar"
           }
         }
       }
@@ -341,9 +361,6 @@
         }
       }
     },
-    "Food Image" : {
-
-    },
     "Full" : {
       "localizations" : {
         "id" : {
@@ -355,6 +372,7 @@
       }
     },
     "gr" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -365,7 +383,14 @@
       }
     },
     "Hello, World!" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, world"
+          }
+        }
+      }
     },
     "ingredient" : {
       "extractionState" : "manual",
@@ -399,7 +424,14 @@
       }
     },
     "Input ingredient name..." : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukkan nama bahan..."
+          }
+        }
+      }
     },
     "Input Recipe" : {
       "localizations" : {
@@ -421,6 +453,16 @@
         }
       }
     },
+    "Insert your cookie/cake image here" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukan gambar kue kering/kuemu disini"
+          }
+        }
+      }
+    },
     "Insert your cookies image here" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -431,9 +473,6 @@
           }
         }
       }
-    },
-    "Insert your recipe image here" : {
-
     },
     "Instructions" : {
       "localizations" : {
@@ -532,6 +571,16 @@
         }
       }
     },
+    "Money Earned" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uang yang Diperoleh"
+          }
+        }
+      }
+    },
     "Money to be received based on sales" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -539,6 +588,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uang yang akan diterima didasarkan pada penjualan"
+          }
+        }
+      }
+    },
+    "Nama Bahan" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingredient Name"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nama Bahan"
           }
         }
       }
@@ -564,7 +629,14 @@
       }
     },
     "No image available" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada gambar yang tersedia"
+          }
+        }
+      }
     },
     "No recipe available" : {
       "extractionState" : "manual",
@@ -609,11 +681,35 @@
         }
       }
     },
-    "Pick photo from gallery" : {
-
+    "Photo of the cookie/cake" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto kue kering/kue"
+          }
+        }
+      }
     },
     "Please choose a recipe portion unit" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mohon pilih salah satu satuan porsi resep"
+          }
+        }
+      }
+    },
+    "Please choose an ingredient" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mohon pilih sebuah bahan"
+          }
+        }
+      }
     },
     "powdered sugar" : {
       "extractionState" : "manual",
@@ -638,7 +734,14 @@
       }
     },
     "Quantity" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quantity"
+          }
+        }
+      }
     },
     "Recipe book" : {
       "extractionState" : "manual",
@@ -663,15 +766,9 @@
     },
     "Recipe portion" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Porsi Resep"
-          }
-        },
         "id" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Porsi resep"
           }
         }
@@ -679,15 +776,9 @@
     },
     "Recipe Portion" : {
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Porsi Resep"
-          }
-        },
         "id" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Porsi resep"
           }
         }
@@ -715,7 +806,14 @@
       }
     },
     "Recognize" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kenali"
+          }
+        }
+      }
     },
     "Result calculation" : {
       "extractionState" : "manual",
@@ -739,6 +837,7 @@
       }
     },
     "salted butter" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -748,11 +847,15 @@
         }
       }
     },
-    "salted butter" : {
-    
-    },
     "Satuan" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Satuan"
+          }
+        }
+      }
     },
     "Save" : {
       "localizations" : {
@@ -890,6 +993,16 @@
         }
       }
     },
+    "View Recipe" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lihat Resep"
+          }
+        }
+      }
+    },
     "yolk" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -912,8 +1025,15 @@
         }
       }
     },
-    "Your target portion want to make" : {
-
+    "Your target portion to make" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bagian target Anda ingin dibuat"
+          }
+        }
+      }
     },
     "Yours target portion want to make" : {
       "extractionState" : "manual",

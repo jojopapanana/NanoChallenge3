@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct InputRecipeNameView: View {
+    
     @State private var recipeName = ""
     @State private var recipeImage:UIImage?
     @State private var showingImagePicker = false
@@ -20,12 +21,11 @@ struct InputRecipeNameView: View {
     var recipePrice:Int
     
     var body: some View {
-        NavigationView{
+        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
-                    Text("Insert Recipe")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                    Image("Progress2")
+                        .padding(.top, 20)
                     
                     Text("Recipe Name")
                         .font(.title)
@@ -36,7 +36,7 @@ struct InputRecipeNameView: View {
                               text: $recipeName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    Text("Food Image")
+                    Text("Photo of the cookie/cake")
                         .font(.title)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
@@ -54,7 +54,7 @@ struct InputRecipeNameView: View {
                                 Image(systemName: "square.and.arrow.up")
                                     .font(.largeTitle)
                                 
-                                Text("Insert your recipe image here")
+                                Text("Insert your cookie/cake image here")
                             }
                             .foregroundStyle(.tertiaryGray)
                         }
@@ -68,6 +68,7 @@ struct InputRecipeNameView: View {
                 }
                 .padding()
             }
+//            .padding(.top, -100)
             .onDisappear {
                 vm.menuName = recipeName
                 vm.ingredientList = ingredients
@@ -78,9 +79,10 @@ struct InputRecipeNameView: View {
                 vm.saveRecipe(context: context)
             }
         }
+        .navigationTitle("Insert Recipe")
         
         NavigationLink{
-            PortionResultView()
+            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipeSellingPrice: recipePrice, ingredients: ingredients)
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 10.0)

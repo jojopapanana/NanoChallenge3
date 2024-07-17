@@ -13,6 +13,8 @@ struct IngredientRowView: View {
     @Binding var ingredient: Ingredient
     @State private var isPresented = false
     @Environment(\.presentationMode) var presentationMode
+    @FocusState var focusedField:Bool
+    @Binding var isRowIngredientView:Bool
     
     var body: some View {
             HStack{
@@ -24,7 +26,7 @@ struct IngredientRowView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 50)
                 .keyboardType(.decimalPad)
-//                .foregroundStyle(Color.pink)
+                .focused($focusedField)
                 
                 Button{
                     isPresented.toggle()
@@ -41,11 +43,23 @@ struct IngredientRowView: View {
                             .stroke(.gray, lineWidth: 1)
                     )
                 }
+                .buttonStyle(.plain)
                 
                 
                 TextField("Input ingredient name...",
                           text: $ingredient.ingredientName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($focusedField)
+            }
+            .toolbar {
+                if isRowIngredientView{
+                    ToolbarItemGroup(placement: .keyboard) {
+                        Spacer()
+                        Button("Done") {
+                            focusedField = false
+                        }
+                    }
+                }
             }
             .sheet(isPresented: $isPresented){
                 VStack{
@@ -53,6 +67,7 @@ struct IngredientRowView: View {
                         ForEach(unitOptions, id:\.self){ unit in
                             Text(unit)
                                 .font(.body)
+                                .foregroundStyle(.black)
                         }
                     }
                     .pickerStyle(WheelPickerStyle())
@@ -75,8 +90,9 @@ struct IngredientRowView: View {
 
 struct IngredientRow_Previews: PreviewProvider {
     @State static var ingredient = Ingredient(ingredientName: "Sugar", ingredientQuantity: 1, ingredientUnit: "kg")
+    @State static var bool = false
     
     static var previews: some View {
-        IngredientRowView(ingredient: $ingredient)
+        IngredientRowView(ingredient: $ingredient, isRowIngredientView: $bool)
     }
 }

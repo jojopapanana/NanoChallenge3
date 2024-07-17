@@ -27,10 +27,8 @@ struct NanoChallenge3App: App {
 
     var body: some Scene {
         WindowGroup {
-//            InputRecipeView()
-//                .modelContainer(sharedModelContainer)
-                        ScanningView(usingCamera: false)
-                            .modelContainer(sharedModelContainer)
+            RecipeView()
+                .modelContainer(sharedModelContainer)
         }
     }
 }

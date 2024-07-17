@@ -10,7 +10,7 @@ import SwiftUI
 struct ChooseInputView: View {
     var body: some View {
         NavigationStack{
-            VStack(alignment: .center, spacing: 20) {
+            VStack {
                 NavigationLink{
                     ScanningView(usingCamera: true)
                 } label: {
@@ -34,7 +34,7 @@ struct ChooseInputView: View {
                 
                 Text("or")
                     .fontWeight(.bold)
-                    .font(.system(size: 32))
+                    .font(.largeTitle)
                     .multilineTextAlignment(.center)
                     .opacity(0.6)
                 
