@@ -5,6 +5,7 @@ import SwiftData
 
 struct SelectedImageView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.presentationMode) var presentationMode
 
     @StateObject var camera = CameraModel()
     @State private var sourceType: UIImagePickerController.SourceType = .camera
@@ -13,12 +14,16 @@ struct SelectedImageView: View {
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var navigateToScanResult = false
     @State private var showPhotosPicker = false
+    @State private var navigateToScanningView = false
     @Binding var navigationPath:NavigationPath
 
     var body: some View {
         VStack {
             HStack {
                 NavigationLink(destination: InputRecipeFromPictView(navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
+                    EmptyView()
+                }
+                NavigationLink(destination: ScanningView(navigationPath: $navigationPath), isActive: $navigateToScanningView) {
                     EmptyView()
                 }
             }
@@ -28,6 +33,8 @@ struct SelectedImageView: View {
                     imageAttribute.image = data
                 }
             }
+            
+            Spacer().frame(height: 40)
 
             Section {
                 if let imageData = imageAttribute.image,
@@ -37,12 +44,6 @@ struct SelectedImageView: View {
                         .scaledToFit()
                         .frame(height: UIScreen.main.bounds.height * 0.65)
                 }
-
-                Button(action: {
-                    showPhotosPicker = true
-                }) {
-                    Label("Pick photo from gallery", systemImage: "photo")
-                }.photosPicker(isPresented: $showPhotosPicker, selection: $selectedPhoto, matching: .images)
 
                 if selectedPhoto != nil && imageAttribute.image != nil {
                     Button(action: {
@@ -64,19 +65,62 @@ struct SelectedImageView: View {
 
                         navigateToScanResult = true
                     }) {
-                        Label("Select photo", systemImage: "photo")
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .foregroundStyle(Color.button)
+                            
+                            HStack{
+                                Image(systemName: "photo")
+                                    .font(.title)
+                                    .fontWeight(.semibold)
+                                
+                                Text("Choose Photo")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                            }
+                            .foregroundStyle(Color.white)
+                        }
+                        .padding()
+                        .frame(width: 361, height: 100)
                     }
+                    
+                    Spacer().frame(height: 10)
 
-                    Button(role: .destructive) {
+                    Button(action: {
                         removeImage()
-                    } label: {
-                        Label("Change Image", systemImage: "trash")
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        ZStack {
+                            HStack {
+                                Image(systemName: "trash")
+                                    .font(.title)
+                                    .fontWeight(.semibold)
+                                
+                                Text("Discard Photo")
+                                    .fontWeight(.semibold)
+                                    .font(.title2)
+                            }
+                            .foregroundStyle(Color.button)
+                        }
+                        .padding()
+
                     }
                 }
             }
+            
+            Spacer().frame(height: 180)
         }
-        .onAppear { }
-        
+        .onAppear {
+            DispatchQueue.main.async {
+                showPhotosPicker = true
+            }
+        }
+        .photosPicker(isPresented: $showPhotosPicker, selection: $selectedPhoto, matching: .images)
+        .onChange(of: showPhotosPicker) { newValue in
+            if !newValue && selectedPhoto == nil {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 
     private func removeImage() {

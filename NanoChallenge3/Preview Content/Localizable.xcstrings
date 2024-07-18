@@ -259,6 +259,7 @@
       }
     },
     "Change Image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -267,6 +268,9 @@
           }
         }
       }
+    },
+    "Choose Photo" : {
+
     },
     "Click the insert recipe button below to add a recipe using the camera." : {
       "localizations" : {
@@ -300,6 +304,7 @@
       }
     },
     "Discard Image" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -308,6 +313,9 @@
           }
         }
       }
+    },
+    "Discard Photo" : {
+
     },
     "Don’t Allow" : {
       "extractionState" : "manual",
@@ -706,6 +714,7 @@
       }
     },
     "Pick photo from gallery" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -925,6 +934,7 @@
       }
     },
     "Select photo" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

@@ -25,7 +25,7 @@ struct InputRecipeFromPictView: View {
     @Binding var navigationPath:NavigationPath
     
     var body: some View {
-        NavigationStack{
+//        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
                     Image("Progress")
@@ -170,7 +170,7 @@ struct InputRecipeFromPictView: View {
                 }
             }
             .navigationTitle("Insert Recipe")
-        }
+//        }
         .padding()
         .sheet(isPresented: $isPresented, content: {
             VStack{

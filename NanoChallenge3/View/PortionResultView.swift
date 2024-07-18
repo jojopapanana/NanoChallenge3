@@ -129,13 +129,11 @@ struct PortionResultView: View {
                         Text("Ingredients information")
                             .fontWeight(.bold)
                             .font(.title3)
-                            .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         Text("Composition needed to fulfill your target")
                             .fontWeight(.light)
                             .font(.body)
-                            .foregroundColor(.black)
                             .frame(maxWidth: .infinity, alignment: .leading)
                         
                         VStack{
@@ -145,7 +143,6 @@ struct PortionResultView: View {
                                         Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
                                             .fontWeight(.bold)
                                             .font(.title3)
-                                            .foregroundColor(.black)
                                     }
                                     .padding()
                                     .frame(maxWidth: 150, alignment: .leading)
@@ -160,7 +157,6 @@ struct PortionResultView: View {
                                         Text(ingredient.ingredientUnit)
                                             .fontWeight(.bold)
                                             .font(.title3)
-                                            .foregroundColor(.black)
                                     }
                                     .padding()
                                     .frame(width: 68, alignment: .leading)
@@ -175,7 +171,6 @@ struct PortionResultView: View {
                                         Text(ingredient.ingredientName)
                                             .fontWeight(.bold)
                                             .font(.title3)
-                                            .foregroundColor(.black)
                                     }
                                     .padding()
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -192,14 +187,12 @@ struct PortionResultView: View {
                                 Text("Money Earned")
                                     .fontWeight(.bold)
                                     .font(.title3)
-                                    .foregroundColor(.black)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding(.top, 20)
                                 
                                 Text("Money to be received based on sales")
                                     .fontWeight(.light)
                                     .font(.body)
-                                    .foregroundColor(.black)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 
                                 HStack{
@@ -211,7 +204,6 @@ struct PortionResultView: View {
                                     Text(Double(recipeSellingPrice)*portionMultiplier, format: .number.precision(.fractionLength(2)))
                                         .fontWeight(.bold)
                                         .font(.title3)
-                                        .foregroundColor(.black)
                                 }
                                 .padding()
                                 .frame(width: 361, alignment: .leading)

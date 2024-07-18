@@ -5,7 +5,6 @@ import SwiftData
 import Vision
 
 struct ScanningView: View {
-    @State var usingCamera: Bool
     @Binding var navigationPath:NavigationPath
     var body: some View {
         VStack {
@@ -15,7 +14,6 @@ struct ScanningView: View {
 }
 
 struct CameraView: View {
-    @Binding var navigationPath:NavigationPath
     @Environment(\.modelContext) private var modelContext
 
     @StateObject var camera = CameraModel()
@@ -30,19 +28,18 @@ struct CameraView: View {
     @State private var navigateToCapturedImage = false
     @State private var isFlashlightOn = false
     @State private var currentZoomFactor: CGFloat = 1.0
+    @Binding var navigationPath:NavigationPath
 
     var body: some View {
         VStack {
             HStack {
-                NavigationLink(destination: InputRecipeFromPictView(navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToScanResult) {
-                    EmptyView()
-                }
                 NavigationLink(destination: SelectedImageView(navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToSelectedImage) {
                     EmptyView()
                 }
                 NavigationLink(destination: CapturedImageView(imageAttribute: $imageAttribute, navigationPath: $navigationPath).environment(\.modelContext, modelContext), isActive: $navigateToCapturedImage) {
                     EmptyView()
                 }
+
             }
             .padding()
 
@@ -52,17 +49,22 @@ struct CameraView: View {
                     imageSelect = true
                 }
             }
-
-            CameraPreview(camera: camera, currentZoomFactor: $currentZoomFactor).frame(height: UIScreen.main.bounds.height * 0.6)
+            
+            Spacer().frame(height: 80)
+            
+            CameraPreview(camera: camera, currentZoomFactor: $currentZoomFactor).frame(height: UIScreen.main.bounds.height * 0.55)
+            
+            Spacer().frame(height: 40)
 
             Section {
                 HStack {
                     Button(action: {
                         navigateToSelectedImage = true
                     }) {
-                        Image(systemName: "photo.artframe.circle")
+                        Image(systemName: "photo.circle")
                             .resizable()
                             .frame(width: 53.0, height: 53.0)
+                            .foregroundColor(Color.button)
                     }
 
                     Spacer().frame(width: 60.0)
@@ -73,6 +75,7 @@ struct CameraView: View {
                         Image(systemName: "camera.circle")
                             .resizable()
                             .frame(width: 53.0, height: 53.0)
+                            .foregroundColor(Color.button)
                     }
 
                     Spacer().frame(width: 60.0)
@@ -83,10 +86,15 @@ struct CameraView: View {
                         Image(systemName: isFlashlightOn ? "flashlight.on.circle" : "flashlight.off.circle")
                             .resizable()
                             .frame(width: 53.0, height: 53.0)
+                            .foregroundColor(Color.button)
                     }
+                    
+                    
                 }
                 .padding()
+                Spacer().frame(height: 180)
             }
+            
         }
         .onAppear {
             camera.check()
