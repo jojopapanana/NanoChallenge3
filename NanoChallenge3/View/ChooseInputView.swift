@@ -14,7 +14,7 @@ struct ChooseInputView: View {
 //        NavigationStack{
             VStack {
                 NavigationLink{
-                    ScanningView(navigationPath: $navigationPath)
+                    ScanInstructions(navigationPath: $navigationPath)
                 } label: {
                     VStack(spacing: 20) {
                         HStack(spacing: 20) {

@@ -69,6 +69,7 @@
       }
     },
     "1. Click start button" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -79,6 +80,7 @@
       }
     },
     "2. Allow access camera" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -89,6 +91,7 @@
       }
     },
     "3. Scan recipe ingredients" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -140,6 +143,9 @@
           }
         }
       }
+    },
+    "Allow access camera" : {
+
     },
     "Allow Access to All Photos" : {
       "extractionState" : "manual",
@@ -270,6 +276,9 @@
       }
     },
     "Choose Photo" : {
+
+    },
+    "Click start button" : {
 
     },
     "Click the insert recipe button below to add a recipe using the camera." : {
