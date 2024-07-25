@@ -83,7 +83,6 @@ struct IngredientRowView: View {
                     }
                 }
             }
-            .padding()
     }
 }
 

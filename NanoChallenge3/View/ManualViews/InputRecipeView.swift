@@ -21,7 +21,6 @@ struct InputRecipeView: View {
     @Binding var navigationPath:NavigationPath
     
     var body: some View {
-//        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
                     Image("Progress")
@@ -34,22 +33,24 @@ struct InputRecipeView: View {
                     
                     ScrollView{
                         ForEach(0..<ingredients.count, id: \.self) { index in
-                            if(index == 0){
+                            HStack {
                                 IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
                                     .frame(height: 80)
-                                    .padding(.top, -15)
+                                    .padding(.top, index == 0 ? -15 : -25)
                                     .onTapGesture {
                                         isRowIngredientView = true
                                     }
-                            } else {
-                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
-                                    .frame(height: 80)
-                                    .padding(.top, -25)
-                                    .onTapGesture {
-                                        isRowIngredientView = true
-                                    }
+                                    
+                                Spacer()
+                                
+                                Button(action: {
+                                    ingredients.remove(at: index)
+                                }) {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                        .padding(.bottom, 15)
+                                }
                             }
-                            
                         }
                     }
                     .frame(maxHeight: 200)
@@ -105,10 +106,9 @@ struct InputRecipeView: View {
                                 
                                 Text("\(recipePortionUnit)")
                             }
-                            .frame(width: 80, height: 30)
                         }
                         .padding()
-                        .frame(width: 80, height: 75, alignment: .center)
+                        .frame(width: 95, height: 75, alignment: .leading)
                         .overlay(
                             RoundedRectangle(cornerRadius: 4)
                             .inset(by: 0.5)
@@ -134,6 +134,7 @@ struct InputRecipeView: View {
                             value: $recipeSellingPrice,
                             format: .number
                         )
+                        .fontWeight(.semibold)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .keyboardType(.decimalPad)
                         .focused($focusedField)
@@ -166,32 +167,31 @@ struct InputRecipeView: View {
                 }
             }
             .navigationTitle("Insert Recipe")
-//        }
-        .padding()
-        .sheet(isPresented: $isPresented, content: {
-            VStack{
-                Picker("Please choose a recipe portion unit", selection: $recipePortionUnit){
-                    ForEach(portionUnit, id:\.self){ unit in
-                        Text(unit)
-                            .font(.body)
+            .padding()
+            .sheet(isPresented: $isPresented, content: {
+                VStack{
+                    Picker("Please choose a recipe portion unit", selection: $recipePortionUnit){
+                        ForEach(portionUnit, id:\.self){ unit in
+                            Text(unit)
+                                .font(.title3)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    
+                    Button(action: {
+                        isPresented = false
+                    }) {
+                        Text("Done")
+                            .font(.title3)
+                            .padding()
+                            .background(.button)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
                 }
-                .pickerStyle(WheelPickerStyle())
-                
-                Button(action: {
-                    isPresented = false
-                }) {
-                    Text("Done")
-                        .font(.headline)
-                        .padding()
-                        .background(.button)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-            }
-        })
-        .tint(.accentColor)
-    }
+            })
+            .tint(.accentColor)
+        }
     
     private func addIngredient() {
         ingredients.append(tempIngredient)
