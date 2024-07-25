@@ -955,6 +955,9 @@
         }
       }
     },
+    "Search Menu" : {
+
+    },
     "Select photo" : {
       "extractionState" : "stale",
       "localizations" : {
