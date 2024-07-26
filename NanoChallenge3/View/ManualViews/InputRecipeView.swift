@@ -35,11 +35,9 @@ struct InputRecipeView: View {
                         ForEach(0..<ingredients.count, id: \.self) { index in
                             HStack {
                                 IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
+                                    .focused($focusedField)
                                     .frame(height: 80)
                                     .padding(.top, index == 0 ? -15 : -25)
-                                    .onTapGesture {
-                                        isRowIngredientView = true
-                                    }
                                     
                                 Spacer()
                                 
@@ -196,6 +194,8 @@ struct InputRecipeView: View {
     private func addIngredient() {
         ingredients.append(tempIngredient)
         tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
+        
+        isRowIngredientView = false
     }
 }
 

@@ -51,16 +51,6 @@ struct IngredientRowView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .focused($focusedField)
             }
-            .toolbar {
-                if isRowIngredientView{
-                    ToolbarItemGroup(placement: .keyboard) {
-                        Spacer()
-                        Button("Done") {
-                            focusedField = false
-                        }
-                    }
-                }
-            }
             .sheet(isPresented: $isPresented){
                 VStack{
                     Picker("Please choose an ingredient", selection: $ingredient.ingredientUnit){
