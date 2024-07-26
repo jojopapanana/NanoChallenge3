@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Ingredient: Codable, Hashable{
+struct Ingredient: Codable, Hashable, Identifiable{
+    let id = UUID()
     var ingredientName: String
     var ingredientQuantity: Int
     var ingredientUnit: String

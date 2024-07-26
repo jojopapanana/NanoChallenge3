@@ -18,18 +18,17 @@ struct InputRecipeNameView: View {
     var ingredients:[Ingredient]
     var recipePortion:Int
     var recipePortionUnit:String
-    var recipePrice:Int
     @Binding var navigationPath:NavigationPath
     
     var body: some View {
-//        NavigationStack{
+        VStack{
             ScrollView{
                 VStack(alignment: .leading){
                     Image("Progress2")
                         .padding(.top, 20)
                     
                     Text("Recipe Name")
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
@@ -37,8 +36,8 @@ struct InputRecipeNameView: View {
                               text: $recipeName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    Text("Photo of the cookie/cake")
-                        .font(.title)
+                    Text("Photo of the cookie")
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     ZStack{
@@ -67,38 +66,40 @@ struct InputRecipeNameView: View {
                         ImagePicker(sourceType: .photoLibrary, image: $recipeImage)
                     }
                 }
-                .padding()
+                .padding(.horizontal, 8)
+                .padding(.bottom, 8)
             }
-//            .padding(.top, -100)
             .onDisappear {
                 vm.menuName = recipeName
                 vm.ingredientList = ingredients
                 vm.portion = recipePortion
                 vm.portionUnit = recipePortionUnit
-                vm.menuPrice = recipePrice
                 vm.imageData = recipeImage?.pngData()
                 vm.saveRecipe(context: context)
             }
-//        }
-        .navigationTitle("Insert Recipe")
-        
-        NavigationLink{
-            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipeSellingPrice: recipePrice, ingredients: ingredients, navigationPath: $navigationPath)
-        } label: {
-            ZStack{
-                RoundedRectangle(cornerRadius: 10.0)
-                
-                Text("Save")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color.white)
+            
+            Spacer()
+            
+            NavigationLink{
+                PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath)
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10.0)
+                    
+                    Text("Save")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.white)
+                }
+                .frame(width: 361, height: 46)
+                .padding(.top, 20)
             }
-            .frame(width: 361, height: 46)
-            .padding(.top, 20)
+            .disabled(recipeName.isEmpty)
+            .tint(.accentColor)
         }
-        .disabled(recipeName.isEmpty)
-        .tint(.accentColor)
-        Spacer()
+        .padding()
+        .navigationTitle("Insert recipe detail")
+        
     }
 }
 

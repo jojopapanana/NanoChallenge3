@@ -66,7 +66,7 @@ struct ChooseInputView: View {
                     )
                 }
             }
-            .navigationTitle("Input Recipe")
+            .navigationTitle("Method")
 //        }
     }
 }

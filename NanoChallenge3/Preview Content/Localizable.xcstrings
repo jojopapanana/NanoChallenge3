@@ -261,6 +261,7 @@
       }
     },
     "Calculate Recipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -501,7 +502,18 @@
         }
       }
     },
+    "Input ingredients detail" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukkan detail bahan"
+          }
+        }
+      }
+    },
     "Input Recipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -517,6 +529,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Masukkan resep"
+          }
+        }
+      }
+    },
+    "Insert recipe detail" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukkan detail resep"
           }
         }
       }
@@ -640,6 +662,7 @@
       }
     },
     "Money Earned" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -707,6 +730,16 @@
         }
       }
     },
+    "No Image Available" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak ada gambar yang tersedia"
+          }
+        }
+      }
+    },
     "No recipe available" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -750,7 +783,18 @@
         }
       }
     },
+    "Photo of the cookie" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto kue kering"
+          }
+        }
+      }
+    },
     "Photo of the cookie/cake" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -846,6 +890,7 @@
       }
     },
     "Recipe Detail" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -949,6 +994,7 @@
       }
     },
     "Rp" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1026,6 +1072,7 @@
       }
     },
     "Selling Price" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
