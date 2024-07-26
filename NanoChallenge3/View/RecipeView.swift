@@ -14,162 +14,119 @@ struct RecipeView: View {
     
     var body: some View {
         NavigationStack(path: $navigationPath){
-            VStack {
+            HStack(spacing: 8){
+                Image("logowisecookforhome")
+                    .resizable()
+                    .frame(width: 35.25, height: 36.8, alignment: .leading)
+                
+                Image("wisecooktitle")
+                    .resizable()
+                    .frame(width: 85.96, height: 13.53)
+                
+                Spacer()
+            }
+            .padding()
+            
+            HStack{
+                Text("Recent Recipes")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                
+                
+            }
+            .padding(.leading)
+            
+            HStack{
+                Text("Recipes that you have made")
+                    .foregroundStyle(Color.gray)
+                Spacer()
+                
+                NavigationLink{
+                    AllRecipeView(navigationPath: $navigationPath)
+                } label: {
+                    HStack {
+                        Text("View all")
+                        Image(systemName: "chevron.right")
+                    }
+                    .padding(.trailing)
+                }
+            }
+            .padding(.leading)
+            
+            VStack{
                 if recipes.isEmpty {
                     recipeCardEmpty()
                 } else {
-                    TabView {
-                        ForEach(recipes.reversed()){recipe in
-                            VStack(alignment: .leading){
-                                Text(recipe.menuName)
-                                    .font(.title)
-                                    .fontWeight(.bold)
-                                    .padding(.top, 20)
-                                
-                                Text("\(recipe.portion) \(recipe.portionUnit)")
-                                    .font(.title2)
-                                    .fontWeight(.light)
-                                
-                                ForEach(recipe.ingredients, id:\.self){ingredient in
-                                    if (ingredient.hashValue <= 1){
-                                        HStack{
-                                            HStack{
-                                                Text("\(ingredient.ingredientQuantity)")
-                                            }
-                                            .padding()
-                                            .overlay(
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                    .inset(by: 0.5)
-                                                    .stroke(.gray, lineWidth: 1)
-                                                    .opacity(0.6)
-                                            )
-                                            
-                                            HStack{
-                                                Text(ingredient.ingredientUnit)
-                                            }
-                                            .padding()
-                                            .overlay(
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                    .inset(by: 0.5)
-                                                    .stroke(.gray, lineWidth: 1)
-                                                    .opacity(0.6)
-                                            )
-                                            
-                                            HStack{
-                                                Text(ingredient.ingredientName)
-                                            }
-                                            .padding()
-                                            .overlay(
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                    .inset(by: 0.5)
-                                                    .stroke(.gray, lineWidth: 1)
-                                                    .opacity(0.6)
-                                            )
+                    VStack(spacing: 18){
+                        ForEach(0..<2, id: \.self) { rowIndex in
+                            HStack(spacing: -4) {
+                                ForEach(0..<2, id: \.self) { columnIndex in
+                                    let cardIndex = rowIndex * 2 + columnIndex
+                                    if cardIndex < recipes.count {
+                                        NavigationLink{
+                                            RecipeDetailView(recipe: recipes[recipes.count - cardIndex - 1], navigationPath: $navigationPath)
+                                        } label: {
+                                            RecipeCardView(recipe: recipes[recipes.count - cardIndex - 1])
                                         }
-                                        .padding(.top, 20)
                                     }
                                 }
-                                
-                                HStack(alignment: .center, spacing: 12){
-                                    NavigationLink{
-                                        //To converter view
-                                    } label: {
-                                        VStack{
-                                            HStack{
-                                                Image(systemName: "scalemass.fill")
-                                                    .fontWeight(.bold)
-                                                    .foregroundStyle(.button)
-                                            }
-                                            .frame(width: 30)
-                                            .padding()
-                                            .overlay(
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                    .inset(by: 0.5)
-                                                    .stroke(.button, lineWidth: 1)
-                                                    .opacity(0.6)
-                                            )
-                                        }
-                                        .padding(.top, 20)
-                                    }
-                                    
-                                    NavigationLink{
-                                        RecipeDetailView(recipe: recipe)
-                                    } label: {
-                                        VStack{
-                                            HStack{
-                                                Text("View Recipe")
-                                                    .fontWeight(.bold)
-                                                    .foregroundStyle(.button)
-                                            }
-                                            .frame(width: 220)
-                                            .padding()
-                                            .overlay(
-                                                    RoundedRectangle(cornerRadius: 8)
-                                                    .inset(by: 0.5)
-                                                    .stroke(.button, lineWidth: 1)
-                                                    .opacity(0.6)
-                                            )
-                                        }
-                                        .padding(.top, 20)
-                                    }
-                                }
-                                .padding()
-                                .frame(width: 312)
                             }
-                            .padding()
-                            .frame(width: 344, height: 446, alignment: .leading)
-                            .background(.recipeBackground)
-                            .cornerRadius(20)
                         }
                     }
-                    .tabViewStyle(.page)
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    .padding(.top, 20)
                 }
-
-                Spacer()
-                
-                NavigationLink(value: "ChooseInputView") {
-                                    VStack {
-                                        Text("Insert Recipe")
-                                            .foregroundColor(.white)
-                                            .font(.title3)
-                                            .fontWeight(.semibold)
-                                    }
-                                    .padding()
-                                    .frame(width: 361, height: 60)
-                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.accentColor))
-                }
-
-//                NavigationLink {
-//                    ChooseInputView()
-//                } label: {
-//                    ZStack{
-//                        RoundedRectangle(cornerRadius: 10)
-//                            .foregroundStyle(Color.button)
-//                        
-//                        HStack{
-//                            Image(systemName: "plus.square")
-//                                .font(.title)
-//                                .fontWeight(.semibold)
-//                            
-//                            Text("Insert Recipe")
-//                                .fontWeight(.semibold)
-//                                .font(.title2)
-//                        }
-//                        .foregroundStyle(Color.white)
-//                    }
-//                    .padding()
-//                    .frame(width: 361, height: 100)
-//                }
             }
-            .navigationTitle("Recipes")
-            .navigationDestination(for: String.self) { value in
-                    if value == "ChooseInputView" {
-                        ChooseInputView(navigationPath: $navigationPath)
+            
+            HStack(spacing: -4){
+                NavigationLink(value: "ManualView") {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundStyle(Color.button)
+                        
+                        HStack{
+                            Image(systemName: "square.and.pencil")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                            
+                            Text("Manual")
+                                .fontWeight(.semibold)
+                                .font(.title2)
+                        }
+                        .foregroundStyle(Color.white)
                     }
-                            // Add other destinations if needed
+                    .padding()
+                    .frame(width: 200, height: 100)
+                }
+                
+                NavigationLink(value: "ScanningView") {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundStyle(Color.button)
+                        
+                        HStack{
+                            Image(systemName: "camera.fill")
+                                .font(.title)
+                                .fontWeight(.semibold)
+                            
+                            Text("Scan")
+                                .fontWeight(.semibold)
+                                .font(.title2)
+                        }
+                        .foregroundStyle(Color.white)
+                    }
+                    .padding()
+                    .frame(width: 200, height: 100)
+                }
             }
-//            .padding(.top, 10)
+            .navigationDestination(for: String.self) { value in
+                if value == "ManualView" {
+                    InputRecipeView(navigationPath: $navigationPath)
+                } else if value == "ScanningView"{
+                    ScanInstructions(navigationPath: $navigationPath)
+                }
+            }
         }
     }
 }

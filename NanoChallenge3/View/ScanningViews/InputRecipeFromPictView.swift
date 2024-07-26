@@ -25,7 +25,6 @@ struct InputRecipeFromPictView: View {
     @Binding var navigationPath:NavigationPath
     
     var body: some View {
-//        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
                     Image("Progress")
@@ -57,6 +56,16 @@ struct InputRecipeFromPictView: View {
                         }
                     }
                     .frame(maxHeight: 200)
+                    
+                    Button(action: addIngredient){
+                        HStack{
+                            Image(systemName: "plus.square.fill")
+                            Text("Add more ingredients")
+                                .fontWeight(.semibold)
+                                .font(.body)
+                            Spacer()
+                        }
+                    }
                     
                     Text("Recipe Portion")
                         .font(.title)
@@ -170,31 +179,35 @@ struct InputRecipeFromPictView: View {
                 }
             }
             .navigationTitle("Insert Recipe")
-//        }
-        .padding()
-        .sheet(isPresented: $isPresented, content: {
-            VStack{
-                Picker("Please choose a recipe portion unit", selection: $recipePortionUnit){
-                    ForEach(portionUnit, id:\.self){ unit in
-                        Text(unit)
-                            .font(.body)
+            .padding()
+            .sheet(isPresented: $isPresented, content: {
+                VStack{
+                    Picker("Please choose a recipe portion unit", selection: $recipePortionUnit){
+                        ForEach(portionUnit, id:\.self){ unit in
+                            Text(unit)
+                                .font(.body)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    
+                    Button(action: {
+                        isPresented = false
+                    }) {
+                        Text("Done")
+                            .font(.headline)
+                            .padding()
+                            .background(.button)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
                     }
                 }
-                .pickerStyle(WheelPickerStyle())
-                
-                Button(action: {
-                    isPresented = false
-                }) {
-                    Text("Done")
-                        .font(.headline)
-                        .padding()
-                        .background(.button)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-            }
-        })
-        .tint(.accentColor)
+            })
+            .tint(.accentColor)
+        }
+    
+    private func addIngredient() {
+        ingredients.append(tempIngredient)
+        tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
     }
     
     private func addIngredientFromPict() {

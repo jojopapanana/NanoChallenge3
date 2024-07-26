@@ -179,6 +179,9 @@
         }
       }
     },
+    "Are you sure to delete?" : {
+
+    },
     "Back" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -786,6 +789,9 @@
         }
       }
     },
+    "Recent Recipes" : {
+
+    },
     "Recipe book" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -806,6 +812,9 @@
           }
         }
       }
+    },
+    "Recipe ingredients" : {
+
     },
     "Recipe Name" : {
       "localizations" : {
@@ -838,6 +847,7 @@
       }
     },
     "Recipes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -857,6 +867,9 @@
           }
         }
       }
+    },
+    "Recipes that you have made" : {
+
     },
     "Recognize" : {
       "localizations" : {
@@ -941,6 +954,9 @@
           }
         }
       }
+    },
+    "Search Menu" : {
+
     },
     "Select photo" : {
       "extractionState" : "stale",
@@ -1037,6 +1053,9 @@
         }
       }
     },
+    "View all" : {
+
+    },
     "View recipe" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1049,6 +1068,7 @@
       }
     },
     "View Recipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1057,6 +1077,9 @@
           }
         }
       }
+    },
+    "Yes" : {
+
     },
     "yolk" : {
       "extractionState" : "manual",

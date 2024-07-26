@@ -9,102 +9,159 @@ import SwiftUI
 
 struct RecipeDetailView: View {
     var recipe:Recipe
+    @Binding var navigationPath:NavigationPath
     
     var body: some View {
-        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
-                    Text("Ingredients Recipe")
+                    Text(recipe.menuName)
                         .font(.title)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
-                        ForEach(0..<recipe.ingredients.count, id: \.self) { index in
-                            HStack{
-                                HStack{
-                                    Text("\(recipe.ingredients[index].ingredientQuantity)")
-                                }
-                                .padding()
-                                .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(.gray, lineWidth: 1)
-                                        .opacity(0.6)
-                                )
-                                
-                                HStack{
-                                    Text(recipe.ingredients[index].ingredientUnit)
-                                }
-                                .padding()
-                                .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(.gray, lineWidth: 1)
-                                        .opacity(0.6)
-                                )
-                                
-                                HStack{
-                                    Text(recipe.ingredients[index].ingredientName)
-                                }
-                                .padding()
-                                .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(.gray, lineWidth: 1)
-                                        .opacity(0.6)
-                                )
-                                
-                                Spacer()
+                    if let imageData = recipe.imageData, let uiImage = UIImage(data: imageData) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .frame(width: 361, height: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                    } else {
+                        Text("No image available")
+                    }
+                    
+                    Text("Recipe ingredients")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .padding(.top, 20)
+                    
+                    Text("Composition needed to fulfill your target")
+                        .font(.body)
+                        .foregroundStyle(.gray)
+                    
+                    VStack(alignment: .leading){
+                        GeometryReader { geometry in
+                                let totalWidth = geometry.size.width
+                                let firstWidth = totalWidth * 1 / 5
+                                let secondWidth = totalWidth * 1 / 5
+                            let thirdWidth = totalWidth * 2.75 / 5
+
+                            HStack {
+                                    Text("qty")
+                                        .fontWeight(.semibold)
+                                        .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                        .frame(width: firstWidth, alignment: .leading)
+
+                                    Text("unit")
+                                        .fontWeight(.semibold)
+                                        .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                        .frame(width: secondWidth, alignment: .leading)
+
+                                    Text("ingredient")
+                                    .fontWeight(.semibold)
+                                        .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                        .frame(width: thirdWidth, alignment: .leading)
+//                                        .layoutPriority(1)
                             }
-                                
+                            .frame(width: totalWidth, alignment: .leading)
                         }
+                        .frame(height: 30)
+                        .padding(.top, 20)
+                        
+                        Divider()
+                        
+                        ForEach(0..<recipe.ingredients.count, id: \.self) { index in
+                                GeometryReader { geometry in
+                                        let totalWidth = geometry.size.width
+                                        let firstWidth = totalWidth * 1 / 5
+                                        let secondWidth = totalWidth * 1 / 5
+                                    let thirdWidth = totalWidth * 2.75 / 5
+
+                                    HStack {
+                                            Text("\(recipe.ingredients[index].ingredientQuantity)")
+                                                .lineLimit(1)
+                                                .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                .frame(width: firstWidth, alignment: .leading)
+
+                                            Text(recipe.ingredients[index].ingredientUnit)
+                                                .lineLimit(1)
+                                                .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                .frame(width: secondWidth, alignment: .leading)
+
+                                            Text(recipe.ingredients[index].ingredientName)
+                                                .lineLimit(1)
+                                                .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                .frame(width: thirdWidth, alignment: .leading)
+                                                .layoutPriority(1)
+                                    }
+                                    .frame(width: totalWidth, alignment: .leading)
+                                }
+                                .frame(height: 30)
+                                
+                            Spacer()
+                            
+                            Divider()
+                    }
+                }
+                .padding(.top, -10)
                     
                     Text("Recipe Portion")
-                        .font(.title)
-                        .fontWeight(.semibold)
+                        .font(.title3)
+                        .fontWeight(.bold)
                         .padding(.top, 20)
                     
                     HStack{
                         Text("\(recipe.portion)")
-                            .font(.largeTitle)
+                            .font(.body)
                             .fontWeight(.bold)
-                            .frame(width: 100, alignment: .leading)
+                            .foregroundStyle(.quartenaryGray)
+                            .frame(width: 220, alignment: .leading)
+                            .padding()
+                            .background(.primaryGray)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .inset(by: 0.5)
+                                    .stroke(Color.gray, lineWidth: 1)
+                                    .opacity(0.6)
+                            )
                         
                         Text("\(recipe.portionUnit)")
-                            .font(.title)
-                            .frame(width: 80)
-                        
-                        Spacer()
-                    }
-                    .padding(.top, 20)
-                    
-                    Text("Selling Price")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .padding(.top, 20)
-                    
-                    HStack{
-                        Text("Rp")
+                            .font(.body)
                             .fontWeight(.semibold)
-                            .font(.title3)
-                        
-                        Text(
-                            "\(recipe.menuPrice)"
-                        )
-                        .font(.title3)
-                        
-                        Spacer()
+                            .foregroundStyle(.quartenaryGray)
+                            .frame(width: 80, alignment: .leading)
+                            .padding()
+                            .background(.primaryGray)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .inset(by: 0.5)
+                                    .stroke(Color.gray, lineWidth: 1)
+                                    .opacity(0.6)
+                            )
                     }
-                    .padding(.top, 20)
+                    .padding(.top, 10)
                 }
             }
             .padding()
-//            .padding(.leading, -120)
+            .navigationTitle("Recipe Detail")
+        
+        NavigationLink{
+            PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, recipeSellingPrice: recipe.menuPrice, ingredients: recipe.ingredients, navigationPath: $navigationPath)
+        } label: {
+            ZStack{
+                RoundedRectangle(cornerRadius: 10.0)
+                
+                Text("Calculate")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.white)
+            }
+            .frame(width: 361, height: 60)
+            .padding(.top, 20)
         }
-        .navigationTitle("Recipe Detail")
     }
 }
 
 //#Preview {
-//    RecipeDetailView()
+//    RecipeDetailView(recipe: Recipe(menuName: "Cookies", portion: 100, portionUnit: "gr", ingredients: [Ingredient(ingredientName: "Sugar", ingredientQuantity: 100, ingredientUnit: "gr")], menuPrice: 10000, imageData: <#T##Data?#>))
 //}
