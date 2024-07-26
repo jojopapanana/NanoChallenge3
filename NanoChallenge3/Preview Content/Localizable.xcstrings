@@ -145,7 +145,14 @@
       }
     },
     "Allow access camera" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Izinkan akses kamera"
+          }
+        }
+      }
     },
     "Allow Access to All Photos" : {
       "extractionState" : "manual",
@@ -180,7 +187,14 @@
       }
     },
     "Are you sure to delete?" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apakah Anda yakin ingin menghapus?"
+          }
+        }
+      }
     },
     "Back" : {
       "extractionState" : "stale",
@@ -209,7 +223,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kembali ke halaman reseo"
+            "value" : "Kembali ke halaman resep"
           }
         }
       }
@@ -279,10 +293,24 @@
       }
     },
     "Choose Photo" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih Foto"
+          }
+        }
+      }
     },
     "Click start button" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klik tombol mulai"
+          }
+        }
+      }
     },
     "Click the insert recipe button below to add a recipe using the camera." : {
       "localizations" : {
@@ -327,7 +355,14 @@
       }
     },
     "Discard Photo" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batalkan foto"
+          }
+        }
+      }
     },
     "Don’t Allow" : {
       "extractionState" : "manual",
@@ -790,7 +825,14 @@
       }
     },
     "Recent Recipes" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resep terbaru"
+          }
+        }
+      }
     },
     "Recipe book" : {
       "extractionState" : "manual",
@@ -814,7 +856,14 @@
       }
     },
     "Recipe ingredients" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informasi bahan"
+          }
+        }
+      }
     },
     "Recipe Name" : {
       "localizations" : {
@@ -869,7 +918,14 @@
       }
     },
     "Recipes that you have made" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resep yang telah Anda buat"
+          }
+        }
+      }
     },
     "Recognize" : {
       "localizations" : {
@@ -1051,7 +1107,14 @@
       }
     },
     "View all" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lihat semua"
+          }
+        }
+      }
     },
     "View recipe" : {
       "extractionState" : "manual",
@@ -1076,7 +1139,14 @@
       }
     },
     "Yes" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ya"
+          }
+        }
+      }
     },
     "yolk" : {
       "extractionState" : "manual",
