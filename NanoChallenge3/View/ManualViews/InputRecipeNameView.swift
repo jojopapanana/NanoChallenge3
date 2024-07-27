@@ -18,19 +18,25 @@ struct InputRecipeNameView: View {
     var ingredients:[Ingredient]
     var recipePortion:Int
     var recipePortionUnit:String
-    var recipePrice:Int
     @Binding var navigationPath:NavigationPath
     
     var body: some View {
 //        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
-                    progressBarSecond()
-                        .padding(.top, 20)
-                        .padding(.horizontal, 20)
+                    Text("Insert recipe detail")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    HStack{
+                        Spacer()
+                        progressBarSecond()
+                            .padding(.vertical, 30)
+                        Spacer()
+                    }
                     
                     Text("Recipe Name")
-                        .font(.title)
+                        .font(.body)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
@@ -39,9 +45,10 @@ struct InputRecipeNameView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     Text("Photo of the cookie/cake")
-                        .font(.title)
+                        .font(.body)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
+                    
                     ZStack{
                         if let recipeImage{
                             Image(uiImage: recipeImage)
@@ -70,21 +77,18 @@ struct InputRecipeNameView: View {
                 }
                 .padding()
             }
-//            .padding(.top, -100)
             .onDisappear {
                 vm.menuName = recipeName
                 vm.ingredientList = ingredients
                 vm.portion = recipePortion
                 vm.portionUnit = recipePortionUnit
-                vm.menuPrice = recipePrice
                 vm.imageData = recipeImage?.pngData()
                 vm.saveRecipe(context: context)
             }
-//        }
-        .navigationTitle("Insert Recipe")
+        .navigationTitle("Insert recipe detail")
         
         NavigationLink{
-            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipeSellingPrice: recipePrice, ingredients: ingredients, navigationPath: $navigationPath)
+            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath)
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 10.0)

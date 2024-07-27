@@ -510,6 +510,9 @@
         }
       }
     },
+    "Input ingredients detail" : {
+
+    },
     "Input Recipe" : {
       "localizations" : {
         "id" : {
@@ -529,6 +532,9 @@
           }
         }
       }
+    },
+    "Insert recipe detail" : {
+
     },
     "Insert your cookie/cake image here" : {
       "localizations" : {
@@ -649,6 +655,7 @@
       }
     },
     "Money Earned" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

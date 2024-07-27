@@ -16,16 +16,14 @@ class Recipe: Identifiable{
     var portion: Int
     var portionUnit: String
     var ingredients:[Ingredient]
-    var menuPrice: Int
     var imageData: Data?
     
-    init(menuName: String, portion: Int, portionUnit: String, ingredients: [Ingredient], menuPrice: Int, imageData: Data?) {
+    init(menuName: String, portion: Int, portionUnit: String, ingredients: [Ingredient], imageData: Data?) {
         id = UUID().uuidString
         self.menuName = menuName
         self.portion = portion
         self.portionUnit = portionUnit
         self.ingredients = ingredients
-        self.menuPrice = menuPrice
         self.imageData = imageData
     }
 }

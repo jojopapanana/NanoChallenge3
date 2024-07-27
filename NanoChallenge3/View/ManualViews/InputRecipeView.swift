@@ -15,7 +15,6 @@ struct InputRecipeView: View {
     @State var recipePortion:Int = 0
     @State var recipePortionUnit:String = "unit"
     var portionUnit = ["unit", "gr", "kg", "pc"]
-    @State var recipeSellingPrice = 0
     @State var isPresented = false
     @State var isRowIngredientView = false
     @Binding var navigationPath:NavigationPath
@@ -23,12 +22,19 @@ struct InputRecipeView: View {
     var body: some View {
             ScrollView{
                 VStack(alignment: .leading){
-                    progressBar()
-                        .padding(.top, 20)
-                        .padding(.horizontal, 20)
+                    Text("Input ingredients detail")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    HStack{
+                        Spacer()
+                        progressBar()
+                            .padding(.vertical, 30)
+                        Spacer()
+                    }
                     
                     Text("Ingredients Recipe")
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
@@ -65,11 +71,12 @@ struct InputRecipeView: View {
                     }
                     
                     Text("Recipe Portion")
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     Text("Enter the portions that the recipe yields")
                         .font(.body)
+                        .foregroundStyle(.gray)
                     
                     HStack{
                         HStack(alignment: .center, spacing: 8) {
@@ -117,31 +124,10 @@ struct InputRecipeView: View {
                         .cornerRadius(4)
                         .buttonStyle(PlainButtonStyle())
                     }
-                    
-                    Text("Selling Price")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .padding(.top, 20)
-                    
-                    HStack{
-                        Text("Rp")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        
-                        TextField(
-                            "0",
-                            value: $recipeSellingPrice,
-                            format: .number
-                        )
-                        .fontWeight(.semibold)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.decimalPad)
-                        .focused($focusedField)
-                    }
                 }
                 
                 NavigationLink{
-                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipePrice: recipeSellingPrice, navigationPath: $navigationPath)
+                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10.0)
@@ -153,7 +139,7 @@ struct InputRecipeView: View {
                     }
                     .frame(width: 361, height: 46)
                 }
-                .disabled(ingredients.isEmpty || recipePortion == 0 || recipeSellingPrice == 0)
+                .disabled(ingredients.isEmpty || recipePortion == 0)
             }
             .toolbar {
                 if(!isRowIngredientView){
@@ -165,7 +151,7 @@ struct InputRecipeView: View {
                     }
                 }
             }
-            .navigationTitle("Insert Recipe")
+            .navigationTitle("Input ingredients detail")
             .padding()
             .sheet(isPresented: $isPresented, content: {
                 VStack{

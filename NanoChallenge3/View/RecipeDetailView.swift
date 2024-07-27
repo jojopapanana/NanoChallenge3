@@ -146,7 +146,7 @@ struct RecipeDetailView: View {
             .navigationTitle("Recipe Detail")
         
         NavigationLink{
-            PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, recipeSellingPrice: recipe.menuPrice, ingredients: recipe.ingredients, navigationPath: $navigationPath)
+            PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, ingredients: recipe.ingredients, navigationPath: $navigationPath)
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 10.0)

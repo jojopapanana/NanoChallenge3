@@ -18,7 +18,7 @@ class InputRecipeViewModel: ObservableObject{
     @Published var ingredientList = [Ingredient]()
     
     func saveRecipe(context: ModelContext){
-        let recipe = Recipe(menuName: menuName, portion: portion, portionUnit: portionUnit, ingredients: ingredientList, menuPrice: menuPrice, imageData: imageData)
+        let recipe = Recipe(menuName: menuName, portion: portion, portionUnit: portionUnit, ingredients: ingredientList, imageData: imageData)
         context.insert(recipe)
         print("save success")
         if let imageData{

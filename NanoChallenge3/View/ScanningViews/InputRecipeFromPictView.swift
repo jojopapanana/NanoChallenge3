@@ -155,7 +155,7 @@ struct InputRecipeFromPictView: View {
                 }
                 
                 NavigationLink{
-                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, recipePrice: recipeSellingPrice, navigationPath: $navigationPath)
+                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10.0)
