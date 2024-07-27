@@ -24,8 +24,9 @@ struct PortionResultView: View {
             ScrollView{
                 VStack(alignment: .leading, spacing: 20) {
                     if !isButtonClicked{
-                        Image("Progress3")
+                        progressBarThird()
                             .padding(.top, 20)
+                            .padding(.horizontal, 20)
                     }
                     
                     Text("Recipe portion")
