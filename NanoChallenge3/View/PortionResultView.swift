@@ -20,7 +20,7 @@ struct PortionResultView: View {
     
     var body: some View {
             ScrollView{
-                VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading) {
                     if !isButtonClicked{
                         Text("Calculate portion")
                             .font(.title)
@@ -37,10 +37,16 @@ struct PortionResultView: View {
                             .font(.title)
                             .fontWeight(.bold)
                     }
-                    
+                }
+                .padding(.horizontal, 8)
+                .padding(.bottom, 8)
+                
+                VStack(alignment: .leading) {
                     Text("Recipe portion")
                         .fontWeight(.bold)
-                        .font(.title3)
+                        .font(.title2)
+                        .padding(.top, 20)
+                    
                     Text("Enter the portions that the recipe yields")
                         .font(.body)
                         .foregroundStyle(.gray)
@@ -48,37 +54,47 @@ struct PortionResultView: View {
                     HStack{
                         HStack(alignment: .center, spacing: 8) {
                             Text("\(recipePortion)")
-                                .fontWeight(.bold)
-                                .font(.largeTitle)
+                                .fontWeight(.semibold)
+                                .font(.body)
                                 .foregroundStyle(.quartenaryGray)
                         }
-                        .padding()
-                        .frame(width: 256, height: 75, alignment: .leading)
-                        .background(.primaryGray)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 12)
+                        .frame(width: 256, alignment: .leading)
                         .cornerRadius(4)
+                        .background(.gray.opacity(0.1))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                        )
                         
                         HStack(alignment: .center) {
                             Spacer()
                             Text(recipePortionUnit)
                                 .fontWeight(.semibold)
-                                .font(.title3)
-                                .foregroundStyle(.quartenaryGray)
+                                .font(.body)
+                                .foregroundStyle(.quaternary)
                                 .frame(maxWidth: .infinity, alignment: .topLeading)
                             Spacer()
                         }
-                        .padding()
-                        .frame(width: 93, height: 75, alignment: .center)
-                        .background(.primaryGray)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 12)
+                        .frame(width: 93, height: 47 ,alignment: .center)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                        )
+                        .background(.gray.opacity(0.1))
                         .cornerRadius(4)
                     }
-                }
-                .padding(.top, 20)
-                .frame(width: 361, alignment: .topLeading)
-                
-                VStack(alignment: .leading) {
+                    
                     Text("Target portion")
                         .fontWeight(.bold)
-                        .font(.title3)
+                        .font(.title2)
                         .padding(.top, 20)
                     
                     Text("Your target portion to make")
@@ -92,9 +108,18 @@ struct PortionResultView: View {
                                 value: $recipePortionInput,
                                 format: .number
                             )
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 12)
                             .keyboardType(.decimalPad)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
+                            .font(.body)
+                            .frame(width: 256, alignment: .leading)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                            )
+                            .cornerRadius(4)
                             .focused($focusedField)
                             .toolbar {
                                 ToolbarItemGroup(placement: .keyboard) {
@@ -106,32 +131,29 @@ struct PortionResultView: View {
                             }
                             .disabled(isButtonClicked)
                         }
-                        .padding()
-                        .frame(width: 256, height: 75, alignment: .leading)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
-                        )
-                        .cornerRadius(4)
                         
                         HStack(alignment: .center) {
                             Spacer()
                             Text(recipePortionUnit)
                                 .fontWeight(.semibold)
-                                .font(.title3)
-                                .foregroundStyle(.quartenaryGray)
+                                .font(.body)
+                                .foregroundStyle(.quaternary)
                                 .frame(maxWidth: .infinity, alignment: .topLeading)
                             Spacer()
                         }
-                        .padding()
-                        .frame(width: 93, height: 75, alignment: .center)
-                        .background(.primaryGray)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 12)
+                        .frame(width: 93, height: 47 ,alignment: .center)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                        )
+                        .background(.gray.opacity(0.1))
                         .cornerRadius(4)
                     }
                 }
-                .padding(.top, 10)
                 .frame(width: 361, alignment: .topLeading)
                 
                 
@@ -145,71 +167,86 @@ struct PortionResultView: View {
                         Text("Composition needed to fulfill your target")
                             .font(.body)
                             .foregroundStyle(.gray)
+                            .padding(.bottom, 20)
                         
                         VStack(alignment: .leading){
-                            ForEach(ingredients, id:\.self){ingredient in
-                                HStack(alignment: .center, spacing: 12) {
-                                    HStack{
-                                        Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
-                                            .fontWeight(.bold)
-                                            .font(.title3)
-                                    }
-                                    .padding()
-                                    .frame(maxWidth: 150, alignment: .leading)
-                                    .cornerRadius(8)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(.gray, lineWidth: 1)
-                                    )
-                                    
-                                    HStack{
-                                        Text(ingredient.ingredientUnit)
-                                            .fontWeight(.bold)
-                                            .font(.title3)
-                                    }
-                                    .padding()
-                                    .frame(width: 68, alignment: .leading)
-                                    .cornerRadius(8)
-                                    .overlay(
-                                      RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(.gray, lineWidth: 1)
-                                    )
-                                    
-                                    HStack{
-                                        Text(ingredient.ingredientName)
-                                            .fontWeight(.bold)
-                                            .font(.title3)
-                                    }
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .cornerRadius(8)
-                                    .overlay(
-                                      RoundedRectangle(cornerRadius: 8)
-                                        .inset(by: 0.5)
-                                        .stroke(.gray, lineWidth: 1)
-                                    )
-                                }
-                            }
-                            
-                                Button(action: {
-                                    navigationPath = NavigationPath() // Reset the path to the root
-                                }) {
-                                    Text("Back to Recipe Page")
-                                        .font(.title3)
+                            GeometryReader { geometry in
+                                    let totalWidth = geometry.size.width
+                                    let firstWidth = totalWidth * 1 / 5
+                                    let secondWidth = totalWidth * 1 / 5
+                                let thirdWidth = totalWidth * 2.75 / 5
+
+                                HStack {
+                                        Text("qty")
+                                            .fontWeight(.semibold)
+                                            .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                            .frame(width: firstWidth, alignment: .leading)
+
+                                        Text("unit")
+                                            .fontWeight(.semibold)
+                                            .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                            .frame(width: secondWidth, alignment: .leading)
+
+                                        Text("ingredient")
                                         .fontWeight(.semibold)
-                                        .foregroundColor(.white)
-                                        .padding()
-                                        .frame(width: 361, height: 60)
-                                        .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.accentColor))
+                                            .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                            .frame(width: thirdWidth, alignment: .leading)
                                 }
+                                .frame(width: totalWidth, alignment: .leading)
+                            }
+                            .frame(height: 30)
+                            
+                            Divider()
+                            
+                            ForEach(ingredients, id:\.self) { ingredient in
+                                    GeometryReader { geometry in
+                                            let totalWidth = geometry.size.width
+                                            let firstWidth = totalWidth * 1 / 5
+                                            let secondWidth = totalWidth * 1 / 5
+                                        let thirdWidth = totalWidth * 2.75 / 5
+
+                                        HStack {
+                                            Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
+                                                    .lineLimit(1)
+                                                    .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                    .frame(width: firstWidth, alignment: .leading)
+
+                                            Text(ingredient.ingredientUnit)
+                                                    .lineLimit(1)
+                                                    .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                    .frame(width: secondWidth, alignment: .leading)
+
+                                            Text(ingredient.ingredientName)
+                                                    .lineLimit(1)
+                                                    .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                    .frame(width: thirdWidth, alignment: .leading)
+                                                    .layoutPriority(1)
+                                        }
+                                        .frame(width: totalWidth, alignment: .leading)
+                                    }
+                                    .frame(height: 30)
+                                    
+                                Spacer()
+                                
+                                Divider()
+                        }
+                            
+                            Button(action: {
+                                navigationPath = NavigationPath() // Reset the path to the root
+                            }) {
+                                Text("Back to Recipe Page")
+                                    .font(.title3)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .frame(width: 361, height: 60)
+                                    .background(RoundedRectangle(cornerRadius: 10.0).fill(Color.accentColor))
+                            }
+                            .padding(.top, 50)
                         }
                     }
                     .padding()
-                    
                 } else {
-                    
                     Button {
                         isButtonClicked = true
                         portionMultiplier = recipePortionInput/Double(recipePortion)
@@ -234,8 +271,6 @@ struct PortionResultView: View {
             .onAppear {
                 UITextField.appearance().clearButtonMode = .whileEditing
             }
-//        }
-        .navigationTitle("Calculate Recipe")
     }
 }
 

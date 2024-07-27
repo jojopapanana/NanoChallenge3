@@ -270,6 +270,7 @@
       }
     },
     "Calculate Recipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

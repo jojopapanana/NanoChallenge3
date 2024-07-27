@@ -27,14 +27,16 @@ struct InputRecipeFromPictView: View {
     var body: some View {
             ScrollView{
                 VStack(alignment: .leading){
-                    progressBar()
-                        .padding(.top, 20)
-                        .padding(.horizontal, 20)
-                    
-                    Text("Ingredients Recipe")
+                    Text("Input ingredients detail")
                         .font(.title)
-                        .fontWeight(.semibold)
-                        .padding(.top, 20)
+                        .fontWeight(.bold)
+                    
+                    HStack{
+                        Spacer()
+                        progressBar()
+                            .padding(.vertical, 30)
+                        Spacer()
+                    }
                     
                     ScrollView{
                         ForEach(0..<ingredients.count, id: \.self) { index in
@@ -69,11 +71,12 @@ struct InputRecipeFromPictView: View {
                     }
                     
                     Text("Recipe Portion")
-                        .font(.title)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     Text("Enter the portions that the recipe yields")
                         .font(.body)
+                        .foregroundStyle(.gray)
                     
                     HStack{
                         HStack(alignment: .center, spacing: 8) {

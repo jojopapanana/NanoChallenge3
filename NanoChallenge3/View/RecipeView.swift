@@ -33,8 +33,6 @@ struct RecipeView: View {
                     .fontWeight(.bold)
                 
                 Spacer()
-                
-                
             }
             .padding(.leading)
             

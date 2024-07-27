@@ -36,6 +36,9 @@ struct IngredientRowView: View {
                             .foregroundStyle(Color.clear)
                         
                         Text("\(ingredient.ingredientUnit)")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 12)
                     }
                     .frame(width: 50, height: 30)
                     .background(

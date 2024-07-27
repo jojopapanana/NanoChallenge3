@@ -21,7 +21,6 @@ struct InputRecipeNameView: View {
     @Binding var navigationPath:NavigationPath
     
     var body: some View {
-//        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
                     Text("Insert recipe detail")
@@ -36,7 +35,7 @@ struct InputRecipeNameView: View {
                     }
                     
                     Text("Recipe Name")
-                        .font(.body)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
@@ -45,7 +44,7 @@ struct InputRecipeNameView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     Text("Photo of the cookie/cake")
-                        .font(.body)
+                        .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
@@ -85,7 +84,6 @@ struct InputRecipeNameView: View {
                 vm.imageData = recipeImage?.pngData()
                 vm.saveRecipe(context: context)
             }
-        .navigationTitle("Insert recipe detail")
         
         NavigationLink{
             PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath)

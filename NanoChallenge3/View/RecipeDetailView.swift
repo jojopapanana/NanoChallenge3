@@ -141,27 +141,23 @@ struct RecipeDetailView: View {
                     }
                     .padding(.top, 10)
                 }
+                
+                NavigationLink{
+                    PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, ingredients: recipe.ingredients, navigationPath: $navigationPath)
+                } label: {
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 10.0)
+                        
+                        Text("Calculate")
+                            .font(.title3)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.white)
+                    }
+                    .frame(width: 361, height: 60)
+                    .padding(.top, 20)
+                }
             }
             .padding()
             .navigationTitle("Recipe Detail")
-        
-        NavigationLink{
-            PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, ingredients: recipe.ingredients, navigationPath: $navigationPath)
-        } label: {
-            ZStack{
-                RoundedRectangle(cornerRadius: 10.0)
-                
-                Text("Calculate")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color.white)
-            }
-            .frame(width: 361, height: 60)
-            .padding(.top, 20)
-        }
     }
 }
-
-//#Preview {
-//    RecipeDetailView(recipe: Recipe(menuName: "Cookies", portion: 100, portionUnit: "gr", ingredients: [Ingredient(ingredientName: "Sugar", ingredientQuantity: 100, ingredientUnit: "gr")], menuPrice: 10000, imageData: <#T##Data?#>))
-//}

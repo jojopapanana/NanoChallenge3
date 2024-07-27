@@ -51,8 +51,8 @@ struct InputRecipeView: View {
                                 Button(action: {
                                     ingredients.remove(at: index)
                                 }) {
-                                    Image(systemName: "trash")
-                                        .foregroundColor(.red)
+                                    Image(systemName: "x.circle.fill")
+                                        .foregroundColor(.gray)
                                         .padding(.bottom, 15)
                                 }
                             }
@@ -86,22 +86,23 @@ struct InputRecipeView: View {
                                 format: .number
                             )
                             .keyboardType(.decimalPad)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
+                            .font(.body)
                             .focused($focusedField)
                             .onTapGesture {
                                 isRowIngredientView = false
                             }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 12)
+                            .frame(width: 256, alignment: .leading)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                            )
+                            .cornerRadius(4)
                         }
-                        .padding()
-                        .frame(width: 256, height: 75, alignment: .leading)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
-                        )
-                        .cornerRadius(4)
+                        
                         
                         Button{
                             isPresented.toggle()
@@ -111,20 +112,24 @@ struct InputRecipeView: View {
                                     .foregroundStyle(Color.clear)
                                 
                                 Text("\(recipePortionUnit)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 12)
+                            .frame(width: 95, alignment: .leading)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                            )
+                            .cornerRadius(4)
                         }
-                        .padding()
-                        .frame(width: 95, height: 75, alignment: .leading)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
-                        )
-                        .cornerRadius(4)
                         .buttonStyle(PlainButtonStyle())
                     }
                 }
+                
+                Spacer()
                 
                 NavigationLink{
                     InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
@@ -140,6 +145,7 @@ struct InputRecipeView: View {
                     .frame(width: 361, height: 46)
                 }
                 .disabled(ingredients.isEmpty || recipePortion == 0)
+                .padding(.top, 50)
             }
             .toolbar {
                 if(!isRowIngredientView){
@@ -151,7 +157,6 @@ struct InputRecipeView: View {
                     }
                 }
             }
-            .navigationTitle("Input ingredients detail")
             .padding()
             .sheet(isPresented: $isPresented, content: {
                 VStack{
