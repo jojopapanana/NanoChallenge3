@@ -23,8 +23,9 @@ struct InputRecipeView: View {
     var body: some View {
             ScrollView{
                 VStack(alignment: .leading){
-                    Image("Progress")
+                    progressBar()
                         .padding(.top, 20)
+                        .padding(.horizontal, 20)
                     
                     Text("Ingredients Recipe")
                         .font(.title)

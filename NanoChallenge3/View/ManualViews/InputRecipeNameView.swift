@@ -25,8 +25,9 @@ struct InputRecipeNameView: View {
 //        NavigationStack{
             ScrollView{
                 VStack(alignment: .leading){
-                    Image("Progress2")
+                    progressBarSecond()
                         .padding(.top, 20)
+                        .padding(.horizontal, 20)
                     
                     Text("Recipe Name")
                         .font(.title)
