@@ -69,7 +69,14 @@
       }
     },
     "1" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1"
+          }
+        }
+      }
     },
     "1. Click start button" : {
       "extractionState" : "stale",
@@ -83,7 +90,14 @@
       }
     },
     "2" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2"
+          }
+        }
+      }
     },
     "2. Allow access camera" : {
       "extractionState" : "stale",
@@ -97,7 +111,14 @@
       }
     },
     "3" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3"
+          }
+        }
+      }
     },
     "3. Scan recipe ingredients" : {
       "extractionState" : "stale",
@@ -312,6 +333,16 @@
         }
       }
     },
+    "Click start" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klik mulai"
+          }
+        }
+      }
+    },
     "Click start button" : {
       "localizations" : {
         "id" : {
@@ -512,7 +543,14 @@
       }
     },
     "Input ingredients detail" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukkan detail bahan"
+          }
+        }
+      }
     },
     "Input Recipe" : {
       "localizations" : {
@@ -525,6 +563,7 @@
       }
     },
     "Insert Recipe" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -535,7 +574,14 @@
       }
     },
     "Insert recipe detail" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukan detail resep"
+          }
+        }
+      }
     },
     "Insert your cookie/cake image here" : {
       "localizations" : {
@@ -966,6 +1012,7 @@
       }
     },
     "Rp" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1029,7 +1076,14 @@
       }
     },
     "Search Menu" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari Menu"
+          }
+        }
+      }
     },
     "Select photo" : {
       "extractionState" : "stale",
@@ -1043,6 +1097,7 @@
       }
     },
     "Selling Price" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {

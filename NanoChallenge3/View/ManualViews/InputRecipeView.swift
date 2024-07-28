@@ -56,6 +56,7 @@ struct InputRecipeView: View {
                                         .padding(.bottom, 15)
                                 }
                             }
+                            .padding(.trailing)
                         }
                     }
                     .frame(maxHeight: 200)
@@ -79,7 +80,7 @@ struct InputRecipeView: View {
                         .foregroundStyle(.gray)
                     
                     HStack{
-                        HStack(alignment: .center, spacing: 8) {
+                        HStack(alignment: .center) {
                             TextField(
                                 "",
                                 value: $recipePortion,
@@ -128,24 +129,6 @@ struct InputRecipeView: View {
                         .buttonStyle(PlainButtonStyle())
                     }
                 }
-                
-                Spacer()
-                
-                NavigationLink{
-                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
-                } label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10.0)
-                        
-                        Text("Next")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.white)
-                    }
-                    .frame(width: 361, height: 46)
-                }
-                .disabled(ingredients.isEmpty || recipePortion == 0)
-                .padding(.top, 50)
             }
             .toolbar {
                 if(!isRowIngredientView){
@@ -181,6 +164,22 @@ struct InputRecipeView: View {
                 }
             })
             .tint(.accentColor)
+        
+            NavigationLink{
+                InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10.0)
+                    
+                    Text("Next")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.white)
+                }
+                .frame(width: 361, height: 46)
+            }
+            .disabled(ingredients.isEmpty || recipePortion == 0)
+            .padding(.bottom, 20)
         }
     
     private func addIngredient() {

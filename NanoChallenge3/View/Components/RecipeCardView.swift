@@ -29,7 +29,7 @@ struct RecipeCardView: View {
                     
                 
                 Text(recipe.menuName)
-                    .foregroundStyle(Color.black)
+                    .foregroundStyle(.menuNameFont)
                     .font(.body)
                     .fontWeight(.semibold)
                     .padding([.top, .horizontal], 8)

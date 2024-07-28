@@ -40,22 +40,23 @@ struct InputRecipeFromPictView: View {
                     
                     ScrollView{
                         ForEach(0..<ingredients.count, id: \.self) { index in
-                            if(index == 0){
+                            HStack {
                                 IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
+                                    .focused($focusedField)
                                     .frame(height: 80)
-                                    .padding(.top, -15)
-                                    .onTapGesture {
-                                        isRowIngredientView = true
-                                    }
-                            } else {
-                                IngredientRowView(ingredient: $ingredients[index], isRowIngredientView: $isRowIngredientView)
-                                    .frame(height: 80)
-                                    .padding(.top, -25)
-                                    .onTapGesture {
-                                        isRowIngredientView = true
-                                    }
+                                    .padding(.top, index == 0 ? -15 : -25)
+                                    
+                                Spacer()
+                                
+                                Button(action: {
+                                    ingredients.remove(at: index)
+                                }) {
+                                    Image(systemName: "x.circle.fill")
+                                        .foregroundColor(.gray)
+                                        .padding(.bottom, 15)
+                                }
                             }
-                            
+                            .padding(.trailing)
                         }
                     }
                     .frame(maxHeight: 200)
@@ -79,29 +80,30 @@ struct InputRecipeFromPictView: View {
                         .foregroundStyle(.gray)
                     
                     HStack{
-                        HStack(alignment: .center, spacing: 8) {
+                        HStack(alignment: .center) {
                             TextField(
                                 "",
                                 value: $recipePortion,
                                 format: .number
                             )
                             .keyboardType(.decimalPad)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
+                            .font(.body)
                             .focused($focusedField)
                             .onTapGesture {
                                 isRowIngredientView = false
                             }
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 12)
+                            .frame(width: 256, alignment: .leading)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                            )
+                            .cornerRadius(4)
                         }
-                        .padding()
-                        .frame(width: 256, height: 75, alignment: .leading)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
-                        )
-                        .cornerRadius(4)
+                        
                         
                         Button{
                             isPresented.toggle()
@@ -111,39 +113,20 @@ struct InputRecipeFromPictView: View {
                                     .foregroundStyle(Color.clear)
                                 
                                 Text("\(recipePortionUnit)")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                             }
-                            .frame(width: 80, height: 30)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 12)
+                            .frame(width: 95, alignment: .leading)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 4)
+                                .inset(by: 0.5)
+                                .stroke(.gray, lineWidth: 1)
+                                .opacity(0.6)
+                            )
+                            .cornerRadius(4)
                         }
-                        .padding()
-                        .frame(width: 80, height: 75, alignment: .center)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 4)
-                            .inset(by: 0.5)
-                            .stroke(.gray, lineWidth: 1)
-                            .opacity(0.6)
-                        )
-                        .cornerRadius(4)
                         .buttonStyle(PlainButtonStyle())
-                    }
-                    
-                    Text("Selling Price")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                        .padding(.top, 20)
-                    
-                    HStack{
-                        Text("Rp")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        
-                        TextField(
-                            "0",
-                            value: $recipeSellingPrice,
-                            format: .number
-                        )
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.decimalPad)
-                        .focused($focusedField)
                     }
                 }
                 .onAppear {
@@ -156,21 +139,6 @@ struct InputRecipeFromPictView: View {
                         addIngredientFromPict()
                     }
                 }
-                
-                NavigationLink{
-                    InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
-                } label: {
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 10.0)
-                        
-                        Text("Next")
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(Color.white)
-                    }
-                    .frame(width: 361, height: 46)
-                }
-                .disabled(ingredients.isEmpty || recipePortion == 0 || recipeSellingPrice == 0)
             }
             .toolbar {
                 if(!isRowIngredientView){
@@ -182,7 +150,6 @@ struct InputRecipeFromPictView: View {
                     }
                 }
             }
-            .navigationTitle("Insert Recipe")
             .padding()
             .sheet(isPresented: $isPresented, content: {
                 VStack{
@@ -207,11 +174,29 @@ struct InputRecipeFromPictView: View {
                 }
             })
             .tint(.accentColor)
+        
+            NavigationLink{
+                InputRecipeNameView(ingredients: ingredients, recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, navigationPath: $navigationPath)
+            } label: {
+                ZStack{
+                    RoundedRectangle(cornerRadius: 10.0)
+                    
+                    Text("Next")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.white)
+                }
+                .frame(width: 361, height: 46)
+            }
+            .disabled(ingredients.isEmpty || recipePortion == 0)
+            .padding(.bottom, 20)
         }
     
     private func addIngredient() {
         ingredients.append(tempIngredient)
         tempIngredient = Ingredient(ingredientName: "", ingredientQuantity: 0, ingredientUnit: "unit")
+        
+        isRowIngredientView = false
     }
     
     private func addIngredientFromPict() {

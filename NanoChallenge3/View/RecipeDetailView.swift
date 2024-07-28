@@ -76,10 +76,10 @@ struct RecipeDetailView: View {
                                     let thirdWidth = totalWidth * 2.75 / 5
 
                                     HStack {
-                                            Text("\(recipe.ingredients[index].ingredientQuantity)")
-                                                .lineLimit(1)
+                                            Text(recipe.ingredients[index].ingredientQuantity, format: .number.precision(.fractionLength(2)))
                                                 .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
                                                 .frame(width: firstWidth, alignment: .leading)
+                                                .fixedSize(horizontal: false, vertical: true)
 
                                             Text(recipe.ingredients[index].ingredientUnit)
                                                 .lineLimit(1)
@@ -141,6 +141,7 @@ struct RecipeDetailView: View {
                     }
                     .padding(.top, 10)
                 }
+                .padding(.horizontal)
                 
                 NavigationLink{
                     PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, ingredients: recipe.ingredients, navigationPath: $navigationPath)

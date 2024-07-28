@@ -25,6 +25,7 @@
 		5B4F29BD2C55566100C27CDB /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F29BC2C55566100C27CDB /* progressBar.swift */; };
 		5B4F29BF2C55566D00C27CDB /* progressBarSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F29BE2C55566D00C27CDB /* progressBarSecond.swift */; };
 		5B4F29C12C55567800C27CDB /* progressBarThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F29C02C55567800C27CDB /* progressBarThird.swift */; };
+		5B4F29C32C56249A00C27CDB /* InstructionStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4F29C22C56249A00C27CDB /* InstructionStep.swift */; };
 		5B61D4AA2C4588DC000E5309 /* RecognizeTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61D4A92C4588DC000E5309 /* RecognizeTextViewModel.swift */; };
 		5B61D4AF2C458F85000E5309 /* InputRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61D4AE2C458F85000E5309 /* InputRecipeViewModel.swift */; };
 		5B61D4B12C45906C000E5309 /* IngredientRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61D4B02C45906C000E5309 /* IngredientRowView.swift */; };
@@ -63,6 +64,7 @@
 		5B4F29BC2C55566100C27CDB /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
 		5B4F29BE2C55566D00C27CDB /* progressBarSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBarSecond.swift; sourceTree = "<group>"; };
 		5B4F29C02C55567800C27CDB /* progressBarThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBarThird.swift; sourceTree = "<group>"; };
+		5B4F29C22C56249A00C27CDB /* InstructionStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionStep.swift; sourceTree = "<group>"; };
 		5B61D4A92C4588DC000E5309 /* RecognizeTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognizeTextViewModel.swift; sourceTree = "<group>"; };
 		5B61D4AE2C458F85000E5309 /* InputRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputRecipeViewModel.swift; sourceTree = "<group>"; };
 		5B61D4B02C45906C000E5309 /* IngredientRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientRowView.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				5B4F29BC2C55566100C27CDB /* progressBar.swift */,
 				5B4F29BE2C55566D00C27CDB /* progressBarSecond.swift */,
 				5B4F29C02C55567800C27CDB /* progressBarThird.swift */,
+				5B4F29C22C56249A00C27CDB /* InstructionStep.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				5B15B21D2C3FC5E5009A0D83 /* ChooseInputView.swift in Sources */,
 				5B61D4AF2C458F85000E5309 /* InputRecipeViewModel.swift in Sources */,
 				5B4F29BF2C55566D00C27CDB /* progressBarSecond.swift in Sources */,
+				5B4F29C32C56249A00C27CDB /* InstructionStep.swift in Sources */,
 				5B61D4B12C45906C000E5309 /* IngredientRowView.swift in Sources */,
 				5BBF067C2C515F8D007A1575 /* RoundedCornersShape.swift in Sources */,
 				43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */,

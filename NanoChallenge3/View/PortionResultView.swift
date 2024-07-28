@@ -26,6 +26,7 @@ struct PortionResultView: View {
                             .font(.title)
                             .fontWeight(.bold)
                         
+                        
                         HStack{
                             Spacer()
                             progressBarThird()
@@ -36,9 +37,10 @@ struct PortionResultView: View {
                         Text("Result calculation")
                             .font(.title)
                             .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                 }
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 16)
                 .padding(.bottom, 8)
                 
                 VStack(alignment: .leading) {
@@ -206,11 +208,13 @@ struct PortionResultView: View {
                                         let thirdWidth = totalWidth * 2.75 / 5
 
                                         HStack {
-                                            Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
-                                                    .lineLimit(1)
-                                                    .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
-                                                    .frame(width: firstWidth, alignment: .leading)
-
+                                            ScrollView{
+                                                Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
+                                                        .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                        .frame(width: firstWidth, alignment: .leading)
+                                                        .fixedSize(horizontal: false, vertical: true)
+                                            }
+                                            
                                             Text(ingredient.ingredientUnit)
                                                     .lineLimit(1)
                                                     .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
@@ -224,15 +228,17 @@ struct PortionResultView: View {
                                         }
                                         .frame(width: totalWidth, alignment: .leading)
                                     }
-                                    .frame(height: 30)
+                                    .frame(minHeight: 30, maxHeight: 100)
                                     
                                 Spacer()
                                 
                                 Divider()
                         }
                             
+                            Spacer()
+                            
                             Button(action: {
-                                navigationPath = NavigationPath() // Reset the path to the root
+                                navigationPath = NavigationPath()
                             }) {
                                 Text("Back to Recipe Page")
                                     .font(.title3)
@@ -247,6 +253,7 @@ struct PortionResultView: View {
                     }
                     .padding()
                 } else {
+                    Spacer()
                     Button {
                         isButtonClicked = true
                         portionMultiplier = recipePortionInput/Double(recipePortion)
@@ -266,7 +273,6 @@ struct PortionResultView: View {
                     .tint(.accentColor)
                     .padding(.top, 50)
                 }
-                Spacer()
             }
             .onAppear {
                 UITextField.appearance().clearButtonMode = .whileEditing

@@ -24,7 +24,7 @@ struct IngredientRowView: View {
                     format: .number
                 )
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .frame(width: 50)
+                .frame(width: 100)
                 .keyboardType(.decimalPad)
                 .focused($focusedField)
                 
@@ -40,7 +40,7 @@ struct IngredientRowView: View {
                             .padding(.horizontal, 8)
                             .padding(.vertical, 12)
                     }
-                    .frame(width: 50, height: 30)
+                    .frame(width: 80, height: 30)
                     .background(
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(.gray, lineWidth: 1)
