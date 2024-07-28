@@ -27,57 +27,61 @@ struct RecipeView: View {
             }
             .padding()
             
-            HStack{
-                Text("Recent Recipes")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Spacer()
-                
-                
-            }
-            .padding(.leading)
+            Spacer()
             
-            HStack{
-                Text("Recipes that you have made")
-                    .foregroundStyle(Color.gray)
-                Spacer()
-                
-                NavigationLink{
-                    AllRecipeView(navigationPath: $navigationPath)
-                } label: {
-                    HStack {
-                        Text("View all")
-                        Image(systemName: "chevron.right")
-                    }
-                    .padding(.trailing)
+            if recipes.isEmpty {
+                recipeCardEmpty()
+            }
+            else {
+                HStack{
+                    Text("Recent Recipes")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    
                 }
-            }
-            .padding(.leading)
-            
-            VStack{
-                if recipes.isEmpty {
-                    recipeCardEmpty()
-                } else {
-                    VStack(spacing: 18){
-                        ForEach(0..<2, id: \.self) { rowIndex in
-                            HStack(spacing: -4) {
-                                ForEach(0..<2, id: \.self) { columnIndex in
-                                    let cardIndex = rowIndex * 2 + columnIndex
-                                    if cardIndex < recipes.count {
-                                        NavigationLink{
-                                            RecipeDetailView(recipe: recipes[recipes.count - cardIndex - 1], navigationPath: $navigationPath)
-                                        } label: {
-                                            RecipeCardView(recipe: recipes[recipes.count - cardIndex - 1])
-                                        }
+                .padding(.leading)
+                
+                HStack{
+                    Text("Recipes that you have made")
+                        .foregroundStyle(Color.gray)
+                    Spacer()
+                    
+                    NavigationLink{
+                        AllRecipeView(navigationPath: $navigationPath)
+                    } label: {
+                        HStack {
+                            Text("View all")
+                            Image(systemName: "chevron.right")
+                        }
+                        .padding(.trailing)
+                    }
+                }
+                .padding(.leading)
+                
+                VStack(spacing: 18){
+                    ForEach(0..<2, id: \.self) { rowIndex in
+                        HStack(spacing: -4) {
+                            ForEach(0..<2, id: \.self) { columnIndex in
+                                let cardIndex = rowIndex * 2 + columnIndex
+                                if cardIndex < recipes.count {
+                                    NavigationLink{
+                                        RecipeDetailView(recipe: recipes[recipes.count - cardIndex - 1], navigationPath: $navigationPath)
+                                    } label: {
+                                        RecipeCardView(recipe: recipes[recipes.count - cardIndex - 1])
                                     }
                                 }
                             }
                         }
                     }
-                    .padding(.top, 20)
                 }
+                .padding(.top, 20)
+
             }
+            
+            Spacer()
             
             HStack(spacing: -4){
                 NavigationLink(value: "ManualView") {
@@ -128,6 +132,7 @@ struct RecipeView: View {
                 }
             }
         }
+        .padding(.vertical)
     }
 }
 

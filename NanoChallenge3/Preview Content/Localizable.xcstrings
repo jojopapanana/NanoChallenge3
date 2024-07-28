@@ -551,6 +551,9 @@
         }
       }
     },
+    "Insert your recipe by selecting the method below" : {
+
+    },
     "Instructions" : {
       "localizations" : {
         "id" : {
@@ -697,6 +700,7 @@
       }
     },
     "No cake recipe available" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -1084,6 +1088,9 @@
           }
         }
       }
+    },
+    "There is no recent recipe for now" : {
+
     },
     "To take pictures and detect the ingredients recipe" : {
       "extractionState" : "manual",

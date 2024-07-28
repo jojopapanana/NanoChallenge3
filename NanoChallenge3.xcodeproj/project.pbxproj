@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4383148E2C4356F900E84B26 /* ScanInstructions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4383148D2C4356F900E84B26 /* ScanInstructions.swift */; };
 		438314922C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */; };
+		43CB8D432C549E6900C3DAA0 /* progressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB8D422C549E6900C3DAA0 /* progressBar.swift */; };
+		43CB8D452C54A84400C3DAA0 /* progressBarSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB8D442C54A84400C3DAA0 /* progressBarSecond.swift */; };
+		43CB8D472C54A87200C3DAA0 /* progressBarThird.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CB8D462C54A87200C3DAA0 /* progressBarThird.swift */; };
 		43D44CE62C4177220070EBA3 /* recipeCardEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */; };
 		43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D44CE72C4177990070EBA3 /* recipeCardFilled.swift */; };
 		5B15B2042C3EFBD8009A0D83 /* NanoChallenge3App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B15B2032C3EFBD8009A0D83 /* NanoChallenge3App.swift */; };
@@ -43,6 +46,9 @@
 /* Begin PBXFileReference section */
 		4383148D2C4356F900E84B26 /* ScanInstructions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanInstructions.swift; sourceTree = "<group>"; };
 		438314912C44815400E84B26 /* PortionResultViewDecimalPadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortionResultViewDecimalPadModifier.swift; sourceTree = "<group>"; };
+		43CB8D422C549E6900C3DAA0 /* progressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBar.swift; sourceTree = "<group>"; };
+		43CB8D442C54A84400C3DAA0 /* progressBarSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBarSecond.swift; sourceTree = "<group>"; };
+		43CB8D462C54A87200C3DAA0 /* progressBarThird.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressBarThird.swift; sourceTree = "<group>"; };
 		43D44CE52C4177220070EBA3 /* recipeCardEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCardEmpty.swift; sourceTree = "<group>"; };
 		43D44CE72C4177990070EBA3 /* recipeCardFilled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recipeCardFilled.swift; sourceTree = "<group>"; };
 		5B15B2002C3EFBD8009A0D83 /* NanoChallenge3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoChallenge3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,6 +185,9 @@
 				5B61D4B02C45906C000E5309 /* IngredientRowView.swift */,
 				5BBF06792C515917007A1575 /* RecipeCardView.swift */,
 				5BBF067B2C515F8D007A1575 /* RoundedCornersShape.swift */,
+				43CB8D422C549E6900C3DAA0 /* progressBar.swift */,
+				43CB8D442C54A84400C3DAA0 /* progressBarSecond.swift */,
+				43CB8D462C54A87200C3DAA0 /* progressBarThird.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -288,8 +297,10 @@
 				5B15B2082C3EFBD8009A0D83 /* Recipe.swift in Sources */,
 				5B61D4B42C4590E7000E5309 /* InputRecipeNameView.swift in Sources */,
 				5B15B21B2C3FC145009A0D83 /* RecipeView.swift in Sources */,
+				43CB8D472C54A87200C3DAA0 /* progressBarThird.swift in Sources */,
 				5B15B21D2C3FC5E5009A0D83 /* ChooseInputView.swift in Sources */,
 				5B61D4AF2C458F85000E5309 /* InputRecipeViewModel.swift in Sources */,
+				43CB8D452C54A84400C3DAA0 /* progressBarSecond.swift in Sources */,
 				5B61D4B12C45906C000E5309 /* IngredientRowView.swift in Sources */,
 				5BBF067C2C515F8D007A1575 /* RoundedCornersShape.swift in Sources */,
 				43D44CE82C4177990070EBA3 /* recipeCardFilled.swift in Sources */,
@@ -297,6 +308,7 @@
 				5B15B2232C3FC62E009A0D83 /* ScanResultView.swift in Sources */,
 				5B61D4AA2C4588DC000E5309 /* RecognizeTextViewModel.swift in Sources */,
 				5BBF067A2C515917007A1575 /* RecipeCardView.swift in Sources */,
+				43CB8D432C549E6900C3DAA0 /* progressBar.swift in Sources */,
 				5B6E543B2C46D68B009EC347 /* RecipeDetailView.swift in Sources */,
 				F7ADC6BD2C41393E00AEB915 /* ImagePicker.swift in Sources */,
 				F7ADC6BF2C413D6000AEB915 /* File.swift in Sources */,

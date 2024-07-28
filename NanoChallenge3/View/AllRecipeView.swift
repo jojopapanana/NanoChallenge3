@@ -20,6 +20,14 @@ struct AllRecipeView: View {
 
     var body: some View {
         ScrollView {
+            
+            HStack {
+                Text("Daftar Resep")
+                    .font(.largeTitle)
+                    .padding([.leading, .top])
+                Spacer()
+            }
+            
             if recipes.isEmpty {
                 recipeCardEmpty()
             } else {
@@ -44,6 +52,7 @@ struct AllRecipeView: View {
         }
         .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Menu")}
 }
+
 
 //#Preview {
 //    AllRecipeView()
