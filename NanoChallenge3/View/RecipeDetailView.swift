@@ -17,12 +17,13 @@ struct RecipeDetailView: View {
                     Text(recipe.menuName)
                         .font(.title)
                         .fontWeight(.semibold)
-                        .padding(.top, 20)
+                        .padding(.top, 10)
                     
                     if let imageData = recipe.imageData, let uiImage = UIImage(data: imageData) {
                             Image(uiImage: uiImage)
                                 .resizable()
-                                .frame(width: 361, height: 200)
+                                .scaledToFill()
+                                .frame(width: 361, height: 200, alignment: .center)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                     } else {
                         Text("No image available")
@@ -76,10 +77,13 @@ struct RecipeDetailView: View {
                                     let thirdWidth = totalWidth * 2.75 / 5
 
                                     HStack {
+                                        ScrollView{
                                             Text(recipe.ingredients[index].ingredientQuantity, format: .number.precision(.fractionLength(2)))
-                                                .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
+                                                .padding(.leading, 8)
+                                                .padding(.top, 4)
                                                 .frame(width: firstWidth, alignment: .leading)
                                                 .fixedSize(horizontal: false, vertical: true)
+                                        }
 
                                             Text(recipe.ingredients[index].ingredientUnit)
                                                 .lineLimit(1)
@@ -113,7 +117,7 @@ struct RecipeDetailView: View {
                             .font(.body)
                             .fontWeight(.bold)
                             .foregroundStyle(.quartenaryGray)
-                            .frame(width: 220, alignment: .leading)
+                            .frame(width: 210, alignment: .leading)
                             .padding()
                             .background(.primaryGray)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -141,10 +145,10 @@ struct RecipeDetailView: View {
                     }
                     .padding(.top, 10)
                 }
-                .padding(.horizontal)
+                .padding([.leading, .trailing], 16)
                 
                 NavigationLink{
-                    PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, ingredients: recipe.ingredients, navigationPath: $navigationPath)
+                    PortionResultView(recipePortion: recipe.portion, recipePortionUnit: recipe.portionUnit, ingredients: recipe.ingredients, navigationPath: $navigationPath, fromRecipeDetail: true)
                 } label: {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10.0)

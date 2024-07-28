@@ -21,7 +21,8 @@ struct RecipeCardView: View {
                 if let imageData = recipe.imageData, let uiImage = UIImage(data: imageData) {
                         Image(uiImage: uiImage)
                             .resizable()
-                            .frame(height: 120)
+                            .scaledToFill()
+                            .frame(width: 170, height: 100)
                             .clipShape(RoundedCornersShape(corners: [.topLeft, .topRight], radius: 10))
                 } else {
                     Text("No image available")
@@ -58,7 +59,7 @@ struct RecipeCardView: View {
             }
         }
         .padding()
-        .frame(width: 200, height: 220)
+        .frame(width: 180, height: 220)
         .foregroundStyle(Color.clear)
     }
 }

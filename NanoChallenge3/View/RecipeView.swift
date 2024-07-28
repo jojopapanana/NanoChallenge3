@@ -27,55 +27,70 @@ struct RecipeView: View {
             }
             .padding()
             
-            HStack{
-                Text("Recent Recipes")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
-                Spacer()
-            }
-            .padding(.leading)
-            
-            HStack{
-                Text("Recipes that you have made")
-                    .foregroundStyle(Color.gray)
-                Spacer()
-                
-                NavigationLink{
-                    AllRecipeView(navigationPath: $navigationPath)
-                } label: {
-                    HStack {
-                        Text("View all")
-                        Image(systemName: "chevron.right")
-                    }
-                    .padding(.trailing)
-                }
-            }
-            .padding(.leading)
+            Spacer()
             
             VStack{
                 if recipes.isEmpty {
                     recipeCardEmpty()
                 } else {
-                    VStack(spacing: 18){
+                    HStack{
+                        Text("Recent Recipes")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                    }
+                    .padding(.leading)
+                    
+                    HStack{
+                        Text("Recipes that you have made")
+                            .foregroundStyle(Color.gray)
+                        Spacer()
+                        
+                        NavigationLink{
+                            AllRecipeView(navigationPath: $navigationPath)
+                        } label: {
+                            HStack {
+                                Text("View all")
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding(.trailing)
+                        }
+                    }
+                    .padding(.leading)
+                    Spacer()
+                    
+                    VStack(alignment: .leading, spacing: 18){
                         ForEach(0..<2, id: \.self) { rowIndex in
-                            HStack(spacing: -4) {
+                            HStack(spacing: 16) {
                                 ForEach(0..<2, id: \.self) { columnIndex in
                                     let cardIndex = rowIndex * 2 + columnIndex
                                     if cardIndex < recipes.count {
-                                        NavigationLink{
-                                            RecipeDetailView(recipe: recipes[recipes.count - cardIndex - 1], navigationPath: $navigationPath)
-                                        } label: {
-                                            RecipeCardView(recipe: recipes[recipes.count - cardIndex - 1])
+                                        let recipe = recipes[recipes.count - cardIndex - 1]
+                                        NavigationLink(value: recipe.id) {
+                                            RecipeCardView(recipe: recipe)
+                                        }
+                                        .navigationDestination(for: String.self) { id in
+                                            if let recipe = recipes.first(where: { $0.id == id }) {
+                                                RecipeDetailView(recipe: recipe, navigationPath: $navigationPath)
+                                            }
                                         }
                                     }
                                 }
+                                Spacer()
                             }
+                            .padding(.leading, 24)
                         }
+                        
+                        Spacer()
                     }
                     .padding(.top, 20)
+                    
+                    Spacer()
                 }
             }
+            
+            Spacer()
             
             HStack(spacing: -4){
                 NavigationLink(value: "ManualView") {

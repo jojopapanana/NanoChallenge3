@@ -17,6 +17,7 @@ struct PortionResultView: View {
     var ingredients:[Ingredient]
     @State private var portionMultiplier = 0.0
     @Binding var navigationPath:NavigationPath
+    var fromRecipeDetail:Bool
     
     var body: some View {
             ScrollView{
@@ -25,14 +26,17 @@ struct PortionResultView: View {
                         Text("Calculate portion")
                             .font(.title)
                             .fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         
-                        
-                        HStack{
-                            Spacer()
-                            progressBarThird()
-                                .padding(.vertical, 30)
-                            Spacer()
+                        if !fromRecipeDetail{
+                            HStack{
+                                Spacer()
+                                progressBarThird()
+                                    .padding(.vertical, 30)
+                                Spacer()
+                            }
                         }
+                        
                     } else {
                         Text("Result calculation")
                             .font(.title)
@@ -210,9 +214,10 @@ struct PortionResultView: View {
                                         HStack {
                                             ScrollView{
                                                 Text(Double(ingredient.ingredientQuantity)*portionMultiplier, format: .number.precision(.fractionLength(2)))
-                                                        .padding(.init(top: 12, leading: 8, bottom: 12, trailing: 8))
-                                                        .frame(width: firstWidth, alignment: .leading)
-                                                        .fixedSize(horizontal: false, vertical: true)
+                                                    .padding(.leading, 8)
+                                                    .padding(.top, 4)
+                                                    .frame(width: firstWidth, alignment: .leading)
+                                                    .fixedSize(horizontal: false, vertical: true)
                                             }
                                             
                                             Text(ingredient.ingredientUnit)

@@ -584,6 +584,7 @@
       }
     },
     "Insert your cookie/cake image here" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -600,6 +601,19 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Masukkan gambar resep Anda di sini"
+          }
+        }
+      }
+    },
+    "Insert your food image here" : {
+
+    },
+    "Insert your recipe by selecting the method below" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukan resepmu dengan memilih metode dibawah ini"
           }
         }
       }
@@ -751,6 +765,7 @@
       }
     },
     "No cake recipe available" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
@@ -814,11 +829,22 @@
       }
     },
     "Photo of the cookie/cake" : {
+      "extractionState" : "stale",
       "localizations" : {
         "id" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Foto kue kering/kue"
+          }
+        }
+      }
+    },
+    "Photo of the food" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Foto makanan"
           }
         }
       }
@@ -1144,6 +1170,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "sdm"
+          }
+        }
+      }
+    },
+    "There is no recent recipe for now" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belum ada resep terbaru untuk sekarang"
           }
         }
       }

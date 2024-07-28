@@ -43,7 +43,7 @@ struct InputRecipeNameView: View {
                               text: $recipeName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    Text("Photo of the cookie/cake")
+                    Text("Photo of the food")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .padding(.top, 20)
@@ -52,21 +52,24 @@ struct InputRecipeNameView: View {
                         if let recipeImage{
                             Image(uiImage: recipeImage)
                                 .resizable()
-                                .frame(height: 200)
+                                .scaledToFill()
+                                .frame(width: 361, height: 200)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         } else {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundStyle(.secondaryGray)
-                                .frame(height: 200)
                             
                             VStack{
                                 Image(systemName: "square.and.arrow.up")
                                     .font(.largeTitle)
                                 
-                                Text("Insert your cookie/cake image here")
+                                Text("Insert your food image here")
                             }
                             .foregroundStyle(.tertiaryGray)
                         }
                     }
+                    .frame(height: 200)
+                    .padding(.top, 20)
                     .onTapGesture {
                         self.showingImagePicker = true
                     }
@@ -86,7 +89,7 @@ struct InputRecipeNameView: View {
             }
         
         NavigationLink{
-            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath)
+            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath, fromRecipeDetail: false)
         } label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 10.0)

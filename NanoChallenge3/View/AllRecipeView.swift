@@ -23,9 +23,15 @@ struct AllRecipeView: View {
             if recipes.isEmpty {
                 recipeCardEmpty()
             } else {
+                Text("Insert recipe detail")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 24)
+                
                 VStack(spacing: 18) {
                     ForEach(0..<filteredRecipe.count / 2, id: \.self) { rowIndex in
-                        HStack(spacing: -4) {
+                        HStack(spacing: 16) {
                             ForEach(0..<2, id: \.self) { columnIndex in
                                 let cardIndex = rowIndex * 2 + columnIndex
                                 if cardIndex < filteredRecipe.count {
@@ -37,9 +43,10 @@ struct AllRecipeView: View {
                                 }
                             }
                         }
+                        .padding(.horizontal)
                     }
                 }
-                .padding(.top, 20)
+                .padding(.top, 10)
             }
         }
         .searchable(text: $searchTerm, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search Menu")}
