@@ -30,20 +30,21 @@ struct AllRecipeView: View {
                     .padding(.leading, 24)
                 
                 VStack(spacing: 18) {
-                    ForEach(0..<filteredRecipe.count / 2, id: \.self) { rowIndex in
+                    ForEach(0..<filteredRecipe.count / 2 + 1, id: \.self) { rowIndex in
                         HStack(spacing: 16) {
                             ForEach(0..<2, id: \.self) { columnIndex in
                                 let cardIndex = rowIndex * 2 + columnIndex
                                 if cardIndex < filteredRecipe.count {
-                                    NavigationLink {
-                                        RecipeDetailView(recipe: filteredRecipe[filteredRecipe.count - cardIndex - 1], navigationPath: $navigationPath)
-                                    } label: {
-                                        RecipeCardView(recipe: filteredRecipe[filteredRecipe.count - cardIndex - 1])
+                                    let recipe = recipes[recipes.count - cardIndex - 1]
+                                    NavigationLink(value: recipe.id) {
+                                        RecipeCardView(recipe: recipe)
                                     }
                                 }
                             }
+                            
+                            Spacer()
                         }
-                        .padding(.horizontal)
+                        .padding(.leading, 24)
                     }
                 }
                 .padding(.top, 10)

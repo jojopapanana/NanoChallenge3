@@ -19,6 +19,7 @@ struct InputRecipeNameView: View {
     var recipePortion:Int
     var recipePortionUnit:String
     @Binding var navigationPath:NavigationPath
+    @State private var navigate = false
     
     var body: some View {
             ScrollView{
@@ -48,49 +49,48 @@ struct InputRecipeNameView: View {
                         .fontWeight(.semibold)
                         .padding(.top, 20)
                     
-                    ZStack{
-                        if let recipeImage{
-                            Image(uiImage: recipeImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 361, height: 200)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                        } else {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundStyle(.secondaryGray)
-                            
-                            VStack{
-                                Image(systemName: "square.and.arrow.up")
-                                    .font(.largeTitle)
-                                
-                                Text("Insert your food image here")
-                            }
-                            .foregroundStyle(.tertiaryGray)
-                        }
-                    }
-                    .frame(height: 200)
-                    .padding(.top, 20)
-                    .onTapGesture {
+                    Button(action: {
                         self.showingImagePicker = true
-                    }
-                    .sheet(isPresented: $showingImagePicker) {
-                        ImagePicker(sourceType: .photoLibrary, image: $recipeImage)
-                    }
+                    }, label: {
+                        ZStack{
+                            if let recipeImage{
+                                ScrollView{
+                                    Image(uiImage: recipeImage)
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill) // Maintain aspect ratio
+                                        .frame(maxWidth: 361, maxHeight: 200) // Set max size to fit
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                        .clipped()
+                                }
+                                
+                            } else {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .foregroundStyle(.secondaryGray)
+                                
+                                VStack{
+                                    Image(systemName: "square.and.arrow.up")
+                                        .font(.largeTitle)
+                                    
+                                    Text("Insert your food image here")
+                                }
+                                .foregroundStyle(.tertiaryGray)
+                            }
+                        }
+                        .frame(height: 200)
+                        .padding(.top, 20)
+                        .sheet(isPresented: $showingImagePicker) {
+                            ImagePicker(sourceType: .photoLibrary, image: $recipeImage)
+                        }
+                    })
+                    .frame(height: 200)
                 }
                 .padding()
             }
-            .onDisappear {
-                vm.menuName = recipeName
-                vm.ingredientList = ingredients
-                vm.portion = recipePortion
-                vm.portionUnit = recipePortionUnit
-                vm.imageData = recipeImage?.pngData()
-                vm.saveRecipe(context: context)
-            }
         
-        NavigationLink{
-            PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath, fromRecipeDetail: false)
-        } label: {
+        Button(action: {
+            saveData()
+            navigate = true
+        }, label: {
             ZStack{
                 RoundedRectangle(cornerRadius: 10.0)
                 
@@ -101,10 +101,24 @@ struct InputRecipeNameView: View {
             }
             .frame(width: 361, height: 46)
             .padding(.top, 20)
-        }
+        })
         .disabled(recipeName.isEmpty)
         .tint(.accentColor)
+        
+        NavigationLink(destination: PortionResultView(recipePortion: recipePortion, recipePortionUnit: recipePortionUnit, ingredients: ingredients, navigationPath: $navigationPath, fromRecipeDetail: false), isActive: $navigate){
+            EmptyView()
+        }
+        
         Spacer()
+    }
+    
+    func saveData(){
+        vm.menuName = recipeName
+        vm.ingredientList = ingredients
+        vm.portion = recipePortion
+        vm.portionUnit = recipePortionUnit
+        vm.imageData = recipeImage?.pngData()
+        vm.saveRecipe(context: context)
     }
 }
 

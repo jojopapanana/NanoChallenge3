@@ -70,15 +70,6 @@ struct RecipeView: View {
                                         NavigationLink(value: recipe.id) {
                                             RecipeCardView(recipe: recipe)
                                         }
-                                        .navigationDestination(for: String.self) { id in
-                                            if let recipe = recipes.first(where: { $0.id == id }) {
-                                                RecipeDetailView(recipe: recipe, navigationPath: $navigationPath)
-                                            } else if id == "ManualView" {
-                                                InputRecipeView(navigationPath: $navigationPath)
-                                            } else if id == "ScanningView" {
-                                                ScanInstructions(navigationPath: $navigationPath)
-                                            }
-                                        }
                                     }
                                 }
                                 Spacer()
@@ -135,6 +126,15 @@ struct RecipeView: View {
                     }
                     .padding()
                     .frame(width: 200, height: 100)
+                }
+            }
+            .navigationDestination(for: String.self) { id in
+                if let recipe = recipes.first(where: { $0.id == id }) {
+                    RecipeDetailView(recipe: recipe, navigationPath: $navigationPath)
+                } else if id == "ManualView" {
+                    InputRecipeView(navigationPath: $navigationPath)
+                } else if id == "ScanningView" {
+                    ScanInstructions(navigationPath: $navigationPath)
                 }
             }
         }
