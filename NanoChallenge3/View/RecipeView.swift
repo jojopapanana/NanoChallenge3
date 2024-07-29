@@ -19,9 +19,9 @@ struct RecipeView: View {
                     .resizable()
                     .frame(width: 35.25, height: 36.8, alignment: .leading)
                 
-                Image("wisecooktitle")
+                Image("wisebaketitle")
                     .resizable()
-                    .frame(width: 85.96, height: 13.53)
+                    .frame(width: 85.96, height: 25)
                 
                 Spacer()
             }
