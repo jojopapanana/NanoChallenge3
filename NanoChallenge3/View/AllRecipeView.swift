@@ -23,7 +23,7 @@ struct AllRecipeView: View {
             if recipes.isEmpty {
                 recipeCardEmpty()
             } else {
-                Text("Insert recipe detail")
+                Text("Recipe list")
                     .font(.title)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)

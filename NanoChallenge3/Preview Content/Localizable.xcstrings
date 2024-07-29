@@ -606,7 +606,14 @@
       }
     },
     "Insert your food image here" : {
-
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Masukan gambar makanan Anda disini"
+          }
+        }
+      }
     },
     "Insert your recipe by selecting the method below" : {
       "localizations" : {
@@ -950,6 +957,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Informasi bahan"
+          }
+        }
+      }
+    },
+    "Recipe list" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daftar resep"
           }
         }
       }
