@@ -455,7 +455,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoChallenge3/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WiseCook;
+				INFOPLIST_KEY_CFBundleDisplayName = WiseBake;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = goblok;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -490,7 +490,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NanoChallenge3/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WiseCook;
+				INFOPLIST_KEY_CFBundleDisplayName = WiseBake;
 				INFOPLIST_KEY_NSAppleMusicUsageDescription = goblok;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
